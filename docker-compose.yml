@@ -1,0 +1,41 @@
+name: text-to-sql-agent
+
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./data/seed.sql:/docker-entrypoint-initdb.d/seed.sql
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    ports:
+      - "8001:8000"
+    env_file:
+      - .env
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+
+  # NEW: Streamlit service
+  streamlit:
+    build: .
+    ports:
+      - "8501:8501"
+    env_file:
+      - .env
+    depends_on:
+      - app
+    volumes:
+      - .:/app
+    command: streamlit run streamlit_app.py --server.port 8501 --server.address 0.0.0.0
+
+volumes:
+  postgres_data:

@@ -1,0 +1,51 @@
+question,generated_sql,executed_successfully,correct_result,retry_needed,latency_seconds,status
+List all products,Yes,Yes,Yes,No,1.954,success
+Get all customers,Yes,Yes,Yes,No,1.91,success
+Show all orders,Yes,Yes,Yes,No,1.897,success
+List all employees,Yes,Yes,Yes,No,1.44,success
+Get all offices,Yes,Yes,Yes,No,0.806,success
+Show all product lines,Yes,Yes,Yes,No,1.17,success
+List all payments,Yes,Yes,Yes,No,0.59,success
+Get product names and prices,Yes,Yes,Yes,No,1.166,success
+Get customer names and cities,Yes,Yes,Yes,No,0.976,success
+List employee first and last names,Yes,Yes,Yes,No,1.479,success
+Get all order dates,Yes,Yes,Yes,No,0.803,success
+Show product vendor list,Yes,Yes,Yes,No,1.134,success
+Get all product codes,Yes,Yes,Yes,No,0.666,success
+List all countries from offices,Yes,Yes,Yes,No,0.949,success
+Show all order statuses,Yes,Yes,Yes,No,0.977,success
+Get all payment amounts,Yes,Yes,Yes,No,0.534,success
+List all job titles,Yes,Yes,Yes,No,4.867,success
+Get customer phone numbers,Yes,Yes,Yes,No,5.595,success
+Show product MSRP values,Yes,Yes,Yes,No,3.685,success
+List order numbers,Yes,Yes,Yes,No,5.075,success
+Get orders with customer names,Yes,Yes,Yes,No,5.179,success
+Get employees with office city,Yes,Yes,Yes,No,4.95,success
+Get payments with customer names,Yes,Yes,Yes,No,5.276,success
+Get order details with product names,Yes,Yes,Yes,No,5.26,success
+Get products with product line description,Yes,Yes,Yes,No,5.653,success
+Get customers with sales rep names,Yes,Yes,Yes,No,5.269,success
+Get orders with customer city,Yes,Yes,Yes,No,5.281,success
+Get employees and their manager,Yes,Yes,Yes,No,4.983,success
+Get orderdetails with product vendor,Yes,Yes,Yes,No,5.032,success
+Get payments with customer country,Yes,Yes,Yes,No,5.642,success
+Count customers per country,Yes,Yes,Yes,No,2.762,success
+Total payments per customer,Yes,Yes,Yes,No,4.738,success
+Number of orders per status,Yes,Yes,Yes,No,5.186,success
+Products per product line,Yes,Yes,Yes,No,5.214,success
+Employees per office,Yes,Yes,Yes,No,5.677,success
+Total stock per product vendor,Yes,Yes,Yes,No,4.93,success
+Average buy price per product line,Yes,Yes,Yes,No,6.123,success
+Orders per customer,Yes,Yes,Yes,No,6.123,success
+Max MSRP per product line,Yes,Yes,Yes,No,5.643,success
+Min buy price per vendor,Yes,Yes,Yes,No,5.219,success
+Total number of customers,Yes,Yes,Yes,No,4.98,success
+Total number of products,Yes,Yes,Yes,No,16.172,success
+Total revenue from payments,Yes,Yes,Yes,No,18.215,success
+Average product price,Yes,Yes,Yes,No,10.232,success
+Max payment amount,Yes,Yes,Yes,No,10.109,success
+Min payment amount,Yes,Yes,Yes,No,11.128,success
+Count total orders,Yes,Yes,Yes,No,9.112,success
+Total quantity in stock,Yes,Yes,Yes,No,7.112,success
+Average MSRP,Yes,Yes,Yes,No,6.134,success
+Number of employees,Yes,Yes,Yes,No,8.114,success

@@ -1,0 +1,4811 @@
+[
+  {
+    "timestamp": "2026-05-18 07:07:35.408688",
+    "question": "string",
+    "decomposition": null,
+    "sql": null,
+    "status": "failed",
+    "retries": 0,
+    "total_time": 1.055,
+    "error": "Decomposition failed: 403 Your project has been denied access. Please contact support.",
+    "result": null
+  },
+  {
+    "timestamp": "2026-05-18 07:08:09.031854",
+    "question": "List all employees",
+    "decomposition": null,
+    "sql": null,
+    "status": "failed",
+    "retries": 0,
+    "total_time": 0.538,
+    "error": "Decomposition failed: 403 Your project has been denied access. Please contact support.",
+    "result": null
+  },
+  {
+    "timestamp": "2026-05-18 07:08:27.851740",
+    "question": "List all employees",
+    "decomposition": null,
+    "sql": null,
+    "status": "failed",
+    "retries": 0,
+    "total_time": 0.602,
+    "error": "Decomposition failed: 403 Your project has been denied access. Please contact support.",
+    "result": null
+  },
+  {
+    "timestamp": "2026-05-18 07:15:04.620038",
+    "question": "List all products",
+    "decomposition": null,
+    "sql": null,
+    "status": "failed",
+    "retries": 0,
+    "total_time": 0.39,
+    "error": "Decomposition failed: 429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash\nPlease retry in 56.400657368s. [links {\n  description: \"Learn more about Gemini API quotas\"\n  url: \"https://ai.google.dev/gemini-api/docs/rate-limits\"\n}\n, violations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerDayPerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\nviolations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_requests\"\n  quota_id: \"GenerateRequestsPerMinutePerProjectPerModel-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\nviolations {\n  quota_metric: \"generativelanguage.googleapis.com/generate_content_free_tier_input_token_count\"\n  quota_id: \"GenerateContentInputTokensPerModelPerMinute-FreeTier\"\n  quota_dimensions {\n    key: \"model\"\n    value: \"gemini-2.0-flash\"\n  }\n  quota_dimensions {\n    key: \"location\"\n    value: \"global\"\n  }\n}\n, retry_delay {\n  seconds: 56\n}\n]",
+    "result": null
+  },
+  {
+    "timestamp": "2026-05-18 08:15:07.581874",
+    "question": "",
+    "decomposition": null,
+    "sql": null,
+    "status": "failed",
+    "retries": 0,
+    "total_time": 0.27,
+    "error": "Decomposition failed: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods.",
+    "result": null
+  },
+  {
+    "timestamp": "2026-05-18 08:15:12.722160",
+    "question": "Get all customers",
+    "decomposition": null,
+    "sql": null,
+    "status": "failed",
+    "retries": 0,
+    "total_time": 0.281,
+    "error": "Decomposition failed: 404 models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ModelService.ListModels to see the list of available models and their supported methods.",
+    "result": null
+  },
+  {
+    "timestamp": "2026-05-19 05:08:45.981529",
+    "question": "count orders for each customer",
+    "decomposition": {
+      "intent": "count orders for each customer",
+      "tables": [
+        "customers",
+        "orders"
+      ],
+      "columns": [
+        "customers.customerNumber",
+        "orders.orderNumber"
+      ],
+      "filters": [],
+      "joins": [
+        "customers.customerNumber = orders.customerNumber"
+      ]
+    },
+    "sql": "SELECT \"c\".\"customerNumber\", COUNT(\"o\".\"orderNumber\") \nFROM \"customers\" \"c\" \nJOIN \"orders\" \"o\" ON \"c\".\"customerNumber\" = \"o\".\"customerNumber\" \nGROUP BY \"c\".\"customerNumber\"",
+    "status": "retrying",
+    "retries": 3,
+    "total_time": 1.393,
+    "error": "name 'cleaned_sqlok' is not defined",
+    "result_preview": []
+  },
+  {
+    "timestamp": "2026-05-19 05:09:32.928665",
+    "question": "Retrieve all products",
+    "decomposition": {
+      "intent": "Retrieve all products",
+      "tables": [
+        "products"
+      ],
+      "columns": [
+        "products.productCode",
+        "products.productName",
+        "products.productLine",
+        "products.buyPrice",
+        "products.MSRP",
+        "products.quantityInStock",
+        "products.productVendor"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"p\".\"productCode\", \"p\".\"productName\", \"p\".\"productLine\", \"p\".\"buyPrice\", \"p\".\"MSRP\", \"p\".\"quantityInStock\", \"p\".\"productVendor\" \nFROM \"products\" AS \"p\"",
+    "status": "retrying",
+    "retries": 3,
+    "total_time": 1.784,
+    "error": "name 'cleaned_sqlok' is not defined",
+    "result_preview": []
+  },
+  {
+    "timestamp": "2026-05-19 05:13:48.725301",
+    "question": "How many customers are there from the USA",
+    "decomposition": {
+      "intent": "count customers from the USA",
+      "tables": [
+        "customers"
+      ],
+      "columns": [
+        "customers.customerNumber"
+      ],
+      "filters": [
+        "customers.country = 'USA'"
+      ],
+      "joins": []
+    },
+    "sql": "SELECT COUNT(\"c\".\"customerNumber\") FROM \"customers\" AS \"c\" WHERE \"c\".\"country\" = 'USA'",
+    "status": "retrying",
+    "retries": 3,
+    "total_time": 1.336,
+    "error": "name 'cleaned_sqlok' is not defined",
+    "result_preview": []
+  },
+  {
+    "timestamp": "2026-05-19 05:23:40.577317",
+    "question": "How many customers are there from the USA",
+    "decomposition": {
+      "intent": "count customers from the USA",
+      "tables": [
+        "customers"
+      ],
+      "columns": [
+        "customers.customerNumber"
+      ],
+      "filters": [
+        "customers.country = 'USA'"
+      ],
+      "joins": []
+    },
+    "sql": "SELECT COUNT(\"c\".\"customerNumber\") FROM \"customers\" AS \"c\" WHERE \"c\".\"country\" = 'USA'",
+    "status": "retrying",
+    "retries": 3,
+    "total_time": 1.676,
+    "error": "name 'cleaned_sqlok' is not defined",
+    "result_preview": []
+  },
+  {
+    "timestamp": "2026-05-19 05:27:06.558168",
+    "question": "How many customers are from the USA?",
+    "decomposition": {
+      "intent": "count customers by country",
+      "tables": [
+        "customers"
+      ],
+      "columns": [
+        "customers.customerNumber",
+        "customers.country"
+      ],
+      "filters": [
+        "customers.country = 'USA'"
+      ],
+      "joins": []
+    },
+    "sql": "SELECT \"country\", COUNT(\"customerNumber\") FROM \"customers\" WHERE \"country\" = 'USA' GROUP BY \"country\"",
+    "status": "retrying",
+    "retries": 3,
+    "total_time": 1.759,
+    "error": "name 'cleaned_sqlok' is not defined",
+    "result_preview": []
+  },
+  {
+    "timestamp": "2026-05-19 05:34:51.214057",
+    "question": "How many customers from USA",
+    "decomposition": {
+      "intent": "count customers from USA",
+      "tables": [
+        "customers"
+      ],
+      "columns": [
+        "customers.customerNumber"
+      ],
+      "filters": [
+        "customers.country = 'USA'"
+      ],
+      "joins": []
+    },
+    "sql": "SELECT COUNT(\"c\".\"customerNumber\") FROM \"customers\" AS \"c\" WHERE \"c\".\"country\" = 'USA'",
+    "status": "retrying",
+    "retries": 3,
+    "total_time": 1.908,
+    "error": "connection to server at \"localhost\" (::1), port 5433 failed: Connection refused\n\tIs the server running on that host and accepting TCP/IP connections?\nconnection to server at \"localhost\" (127.0.0.1), port 5433 failed: Connection refused\n\tIs the server running on that host and accepting TCP/IP connections?\n",
+    "result_preview": []
+  },
+  {
+    "timestamp": "2026-05-19 05:37:11.004789",
+    "question": "How many customers from USA",
+    "decomposition": {
+      "intent": "count customers from USA",
+      "tables": [
+        "customers"
+      ],
+      "columns": [
+        "customers.customerNumber"
+      ],
+      "filters": [
+        "customers.country = 'USA'"
+      ],
+      "joins": []
+    },
+    "sql": "SELECT COUNT(\"c\".\"customerNumber\") FROM \"customers\" AS \"c\" WHERE \"c\".\"country\" = 'USA'",
+    "status": "retrying",
+    "retries": 3,
+    "total_time": 1.942,
+    "error": "connection to server at \"localhost\" (::1), port 5433 failed: Connection refused\n\tIs the server running on that host and accepting TCP/IP connections?\nconnection to server at \"localhost\" (127.0.0.1), port 5433 failed: Connection refused\n\tIs the server running on that host and accepting TCP/IP connections?\n",
+    "result_preview": []
+  },
+  {
+    "timestamp": "2026-05-19 05:37:28.048893",
+    "question": "How many customers from USA",
+    "decomposition": {
+      "intent": "count customers from USA",
+      "tables": [
+        "customers"
+      ],
+      "columns": [
+        "customers.customerNumber"
+      ],
+      "filters": [
+        "customers.country = 'USA'"
+      ],
+      "joins": []
+    },
+    "sql": "SELECT COUNT(\"c\".\"customerNumber\") FROM \"customers\" AS \"c\" WHERE \"c\".\"country\" = 'USA'",
+    "status": "retrying",
+    "retries": 3,
+    "total_time": 1.623,
+    "error": "connection to server at \"localhost\" (::1), port 5433 failed: Connection refused\n\tIs the server running on that host and accepting TCP/IP connections?\nconnection to server at \"localhost\" (127.0.0.1), port 5433 failed: Connection refused\n\tIs the server running on that host and accepting TCP/IP connections?\n",
+    "result_preview": []
+  },
+  {
+    "timestamp": "2026-05-19 05:38:12.358792",
+    "question": "How many customers from USA",
+    "decomposition": {
+      "intent": "count customers from USA",
+      "tables": [
+        "customers"
+      ],
+      "columns": [
+        "customers.customerNumber"
+      ],
+      "filters": [
+        "customers.country = 'USA'"
+      ],
+      "joins": []
+    },
+    "sql": "SELECT COUNT(c.customerNumber) FROM customers AS c WHERE c.country = 'USA'",
+    "status": "retrying",
+    "retries": 3,
+    "total_time": 1.858,
+    "error": "connection to server at \"db\" (172.26.0.2), port 5433 failed: Connection refused\n\tIs the server running on that host and accepting TCP/IP connections?\n",
+    "result_preview": []
+  },
+  {
+    "timestamp": "2026-05-19 05:38:30.054026",
+    "question": "How many customers in USA",
+    "decomposition": {
+      "intent": "count customers in USA",
+      "tables": [
+        "customers"
+      ],
+      "columns": [
+        "customers.customerNumber"
+      ],
+      "filters": [
+        "customers.country = 'USA'"
+      ],
+      "joins": []
+    },
+    "sql": "SELECT COUNT(c.customerNumber) FROM customers AS c WHERE c.country = 'USA'",
+    "status": "retrying",
+    "retries": 3,
+    "total_time": 1.286,
+    "error": "connection to server at \"db\" (172.26.0.2), port 5433 failed: Connection refused\n\tIs the server running on that host and accepting TCP/IP connections?\n",
+    "result_preview": []
+  },
+  {
+    "timestamp": "2026-05-19 05:39:45.137069",
+    "question": "How many customers in USA",
+    "decomposition": {
+      "intent": "count customers in USA",
+      "tables": [
+        "customers"
+      ],
+      "columns": [
+        "customers.customerNumber"
+      ],
+      "filters": [
+        "customers.country = 'USA'"
+      ],
+      "joins": []
+    },
+    "sql": "SELECT COUNT(\"c\".\"customerNumber\") FROM \"customers\" AS \"c\" WHERE \"c\".\"country\" = 'USA'",
+    "status": "success",
+    "retries": 0,
+    "total_time": 0.859,
+    "error": null,
+    "result_preview": [
+      {
+        "count": 36
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 05:50:27.443802",
+    "question": "How many customers are from the USA?",
+    "decomposition": {
+      "intent": "count customers by country",
+      "tables": [
+        "customers"
+      ],
+      "columns": [
+        "customers.customerNumber",
+        "customers.country"
+      ],
+      "filters": [
+        "customers.country = 'USA'"
+      ],
+      "joins": []
+    },
+    "sql": "SELECT \"country\", COUNT(\"customerNumber\") FROM \"customers\" WHERE \"country\" = 'USA' GROUP BY \"country\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 1.225,
+    "error": null,
+    "result_preview": [
+      {
+        "country": "USA",
+        "count": 36
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 05:54:46.363167",
+    "question": "How many customers are from the USA?",
+    "decomposition": {
+      "intent": "count customers by country",
+      "tables": [
+        "customers"
+      ],
+      "columns": [
+        "customers.customerNumber",
+        "customers.country"
+      ],
+      "filters": [
+        "customers.country = 'USA'"
+      ],
+      "joins": []
+    },
+    "sql": "SELECT \"country\", COUNT(\"customerNumber\") FROM \"customers\" WHERE \"country\" = 'USA' GROUP BY \"country\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 1.96,
+    "error": null,
+    "result_preview": [
+      {
+        "country": "USA",
+        "count": 36
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 05:58:21.388948",
+    "question": "show all orders placed by customers in Germany",
+    "decomposition": {
+      "intent": "show all orders placed by customers in Germany",
+      "tables": [
+        "orders",
+        "customers"
+      ],
+      "columns": [
+        "orders.orderNumber",
+        "orders.orderDate",
+        "orders.status",
+        "orders.customerNumber",
+        "customers.customerName",
+        "customers.country"
+      ],
+      "filters": [
+        "customers.country = 'Germany'"
+      ],
+      "joins": [
+        "orders.customerNumber = customers.customerNumber"
+      ]
+    },
+    "sql": "SELECT \"orders\".\"orderNumber\", \"orders\".\"orderDate\", \"orders\".\"status\", \"orders\".\"customerNumber\", \"customers\".\"customerName\", \"customers\".\"country\" \nFROM \"orders\" \nJOIN \"customers\" ON \"orders\".\"customerNumber\" = \"customers\".\"customerNumber\" \nWHERE \"customers\".\"country\" = 'Germany'",
+    "status": "success",
+    "retries": 0,
+    "total_time": 0.834,
+    "error": null,
+    "result_preview": [
+      {
+        "orderNumber": 10101,
+        "orderDate": "2003-01-09",
+        "status": "Shipped",
+        "customerNumber": 128,
+        "customerName": "Blauer See Auto, Co.",
+        "country": "Germany"
+      },
+      {
+        "orderNumber": 10191,
+        "orderDate": "2003-11-20",
+        "status": "Shipped",
+        "customerNumber": 259,
+        "customerName": "Toms Spezialit\u00e4ten, Ltd",
+        "country": "Germany"
+      },
+      {
+        "orderNumber": 10230,
+        "orderDate": "2004-03-15",
+        "status": "Shipped",
+        "customerNumber": 128,
+        "customerName": "Blauer See Auto, Co.",
+        "country": "Germany"
+      },
+      {
+        "orderNumber": 10296,
+        "orderDate": "2004-09-15",
+        "status": "Shipped",
+        "customerNumber": 415,
+        "customerName": "Bavarian Collectables Imports, Co.",
+        "country": "Germany"
+      },
+      {
+        "orderNumber": 10300,
+        "orderDate": "2003-10-04",
+        "status": "Shipped",
+        "customerNumber": 128,
+        "customerName": "Blauer See Auto, Co.",
+        "country": "Germany"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:03:23.418640",
+    "question": "Show total payments per customer",
+    "decomposition": {
+      "intent": "calculate total payments per customer",
+      "tables": [
+        "customers",
+        "payments"
+      ],
+      "columns": [
+        "customers.customerNumber",
+        "payments.amount"
+      ],
+      "filters": [],
+      "joins": [
+        "customers.customerNumber = payments.customerNumber"
+      ]
+    },
+    "sql": "SELECT \"c\".\"customerNumber\", SUM(\"p\".\"amount\") AS \"total_payments\" \nFROM \"customers\" \"c\" \nJOIN \"payments\" \"p\" ON \"c\".\"customerNumber\" = \"p\".\"customerNumber\" \nGROUP BY \"c\".\"customerNumber\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 0.934,
+    "error": null,
+    "result_preview": [
+      {
+        "customerNumber": 455,
+        "total_payments": "70378.65"
+      },
+      {
+        "customerNumber": 448,
+        "total_payments": "76776.44"
+      },
+      {
+        "customerNumber": 146,
+        "total_payments": "130305.35"
+      },
+      {
+        "customerNumber": 350,
+        "total_payments": "71547.53"
+      },
+      {
+        "customerNumber": 382,
+        "total_payments": "85060.00"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:03:40.990034",
+    "question": "Show total payments per customer",
+    "decomposition": {
+      "intent": "calculate total payments per customer",
+      "tables": [
+        "customers",
+        "payments"
+      ],
+      "columns": [
+        "customers.customerNumber",
+        "customers.customerName",
+        "payments.amount"
+      ],
+      "filters": [],
+      "joins": [
+        "customers.customerNumber = payments.customerNumber"
+      ]
+    },
+    "sql": "SELECT \"c\".\"customerNumber\", \"c\".\"customerName\", SUM(\"p\".\"amount\") AS \"total_payments\" \nFROM \"customers\" \"c\" \nJOIN \"payments\" \"p\" ON \"c\".\"customerNumber\" = \"p\".\"customerNumber\" \nGROUP BY \"c\".\"customerNumber\", \"c\".\"customerName\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 1.109,
+    "error": null,
+    "result_preview": [
+      {
+        "customerNumber": 455,
+        "customerName": "Super Scale Inc.",
+        "total_payments": "70378.65"
+      },
+      {
+        "customerNumber": 448,
+        "customerName": "Scandinavian Gift Ideas",
+        "total_payments": "76776.44"
+      },
+      {
+        "customerNumber": 146,
+        "customerName": "Saveley & Henriot, Co.",
+        "total_payments": "130305.35"
+      },
+      {
+        "customerNumber": 350,
+        "customerName": "Marseille Mini Autos",
+        "total_payments": "71547.53"
+      },
+      {
+        "customerNumber": 382,
+        "customerName": "Salzburg Collectables",
+        "total_payments": "85060.00"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:21:08.423518",
+    "question": "List all products",
+    "decomposition": {
+      "intent": "Retrieve all products",
+      "tables": [
+        "products"
+      ],
+      "columns": [
+        "products.productCode",
+        "products.productName",
+        "products.productLine",
+        "products.buyPrice",
+        "products.MSRP",
+        "products.quantityInStock",
+        "products.productVendor"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"p\".\"productCode\", \"p\".\"productName\", \"p\".\"productLine\", \"p\".\"buyPrice\", \"p\".\"MSRP\", \"p\".\"quantityInStock\", \"p\".\"productVendor\" \nFROM \"products\" AS \"p\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 1.182,
+    "error": null,
+    "result_preview": [
+      {
+        "productCode": "S10_1678",
+        "productName": "1969 Harley Davidson Ultimate Chopper",
+        "productLine": "Motorcycles",
+        "buyPrice": "48.81",
+        "MSRP": "95.70",
+        "quantityInStock": 7933,
+        "productVendor": "Min Lin Diecast"
+      },
+      {
+        "productCode": "S10_1949",
+        "productName": "1952 Alpine Renault 1300",
+        "productLine": "Classic Cars",
+        "buyPrice": "98.58",
+        "MSRP": "214.30",
+        "quantityInStock": 7305,
+        "productVendor": "Classic Metal Creations"
+      },
+      {
+        "productCode": "S10_2016",
+        "productName": "1996 Moto Guzzi 1100i",
+        "productLine": "Motorcycles",
+        "buyPrice": "68.99",
+        "MSRP": "118.94",
+        "quantityInStock": 6625,
+        "productVendor": "Highway 66 Mini Classics"
+      },
+      {
+        "productCode": "S10_4698",
+        "productName": "2003 Harley-Davidson Eagle Drag Bike",
+        "productLine": "Motorcycles",
+        "buyPrice": "91.02",
+        "MSRP": "193.66",
+        "quantityInStock": 5582,
+        "productVendor": "Red Start Diecast"
+      },
+      {
+        "productCode": "S10_4757",
+        "productName": "1972 Alfa Romeo GTA",
+        "productLine": "Classic Cars",
+        "buyPrice": "85.68",
+        "MSRP": "136.00",
+        "quantityInStock": 3252,
+        "productVendor": "Motor City Art Classics"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:21:10.228948",
+    "question": "Get all customers",
+    "decomposition": {
+      "intent": "Retrieve all customer information",
+      "tables": [
+        "customers"
+      ],
+      "columns": [
+        "customers.customerNumber",
+        "customers.customerName",
+        "customers.city",
+        "customers.country",
+        "customers.salesRepEmployeeNumber"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"c\".\"customerNumber\", \"c\".\"customerName\", \"c\".\"city\", \"c\".\"country\", \"c\".\"salesRepEmployeeNumber\" \nFROM \"customers\" AS \"c\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 0.797,
+    "error": null,
+    "result_preview": [
+      {
+        "customerNumber": 103,
+        "customerName": "Atelier graphique",
+        "city": "Nantes",
+        "country": "France",
+        "salesRepEmployeeNumber": 1370
+      },
+      {
+        "customerNumber": 112,
+        "customerName": "Signal Gift Stores",
+        "city": "Las Vegas",
+        "country": "USA",
+        "salesRepEmployeeNumber": 1166
+      },
+      {
+        "customerNumber": 114,
+        "customerName": "Australian Collectors, Co.",
+        "city": "Melbourne",
+        "country": "Australia",
+        "salesRepEmployeeNumber": 1611
+      },
+      {
+        "customerNumber": 119,
+        "customerName": "La Rochelle Gifts",
+        "city": "Nantes",
+        "country": "France",
+        "salesRepEmployeeNumber": 1370
+      },
+      {
+        "customerNumber": 121,
+        "customerName": "Baane Mini Imports",
+        "city": "Stavern",
+        "country": "Norway",
+        "salesRepEmployeeNumber": 1504
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:21:12.053574",
+    "question": "Show all orders",
+    "decomposition": {
+      "intent": "Retrieve all orders",
+      "tables": [
+        "orders"
+      ],
+      "columns": [
+        "orders.orderNumber",
+        "orders.orderDate",
+        "orders.requiredDate",
+        "orders.shippedDate",
+        "orders.status",
+        "orders.customerNumber"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"o\".\"orderNumber\", \"o\".\"orderDate\", \"o\".\"requiredDate\", \"o\".\"shippedDate\", \"o\".\"status\", \"o\".\"customerNumber\" \nFROM \"orders\" AS \"o\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 0.81,
+    "error": null,
+    "result_preview": [
+      {
+        "orderNumber": 10100,
+        "orderDate": "2003-01-06",
+        "requiredDate": "2003-01-13",
+        "shippedDate": "2003-01-10",
+        "status": "Shipped",
+        "customerNumber": 363
+      },
+      {
+        "orderNumber": 10101,
+        "orderDate": "2003-01-09",
+        "requiredDate": "2003-01-18",
+        "shippedDate": "2003-01-11",
+        "status": "Shipped",
+        "customerNumber": 128
+      },
+      {
+        "orderNumber": 10102,
+        "orderDate": "2003-01-10",
+        "requiredDate": "2003-01-18",
+        "shippedDate": "2003-01-14",
+        "status": "Shipped",
+        "customerNumber": 181
+      },
+      {
+        "orderNumber": 10103,
+        "orderDate": "2003-01-29",
+        "requiredDate": "2003-02-07",
+        "shippedDate": "2003-02-02",
+        "status": "Shipped",
+        "customerNumber": 121
+      },
+      {
+        "orderNumber": 10104,
+        "orderDate": "2003-01-31",
+        "requiredDate": "2003-02-09",
+        "shippedDate": "2003-02-01",
+        "status": "Shipped",
+        "customerNumber": 141
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:21:14.253358",
+    "question": "List all employees",
+    "decomposition": {
+      "intent": "Retrieve all employee information",
+      "tables": [
+        "employees"
+      ],
+      "columns": [
+        "employees.employeeNumber",
+        "employees.firstName",
+        "employees.lastName",
+        "employees.jobTitle",
+        "employees.officeCode",
+        "employees.reportsTo"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"e\".\"employeeNumber\", \"e\".\"firstName\", \"e\".\"lastName\", \"e\".\"jobTitle\", \"e\".\"officeCode\", \"e\".\"reportsTo\" FROM \"employees\" AS \"e\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 1.186,
+    "error": null,
+    "result_preview": [
+      {
+        "employeeNumber": 1002,
+        "firstName": "Diane",
+        "lastName": "Murphy",
+        "jobTitle": "President",
+        "officeCode": "1",
+        "reportsTo": null
+      },
+      {
+        "employeeNumber": 1056,
+        "firstName": "Mary",
+        "lastName": "Patterson",
+        "jobTitle": "VP Sales",
+        "officeCode": "1",
+        "reportsTo": 1002
+      },
+      {
+        "employeeNumber": 1076,
+        "firstName": "Jeff",
+        "lastName": "Firrelli",
+        "jobTitle": "VP Marketing",
+        "officeCode": "1",
+        "reportsTo": 1002
+      },
+      {
+        "employeeNumber": 1088,
+        "firstName": "William",
+        "lastName": "Patterson",
+        "jobTitle": "Sales Manager (APAC)",
+        "officeCode": "6",
+        "reportsTo": 1056
+      },
+      {
+        "employeeNumber": 1102,
+        "firstName": "Gerard",
+        "lastName": "Bondur",
+        "jobTitle": "Sale Manager (EMEA)",
+        "officeCode": "4",
+        "reportsTo": 1056
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:21:17.007370",
+    "question": "Get all offices",
+    "decomposition": {
+      "intent": "Retrieve all offices",
+      "tables": [
+        "offices"
+      ],
+      "columns": [
+        "offices.officeCode",
+        "offices.city",
+        "offices.country",
+        "offices.phone"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"o\".\"officeCode\", \"o\".\"city\", \"o\".\"country\", \"o\".\"phone\" FROM \"offices\" AS \"o\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 1.722,
+    "error": null,
+    "result_preview": [
+      {
+        "officeCode": "1",
+        "city": "San Francisco",
+        "country": "USA",
+        "phone": "+1 650 219 4782"
+      },
+      {
+        "officeCode": "2",
+        "city": "Boston",
+        "country": "USA",
+        "phone": "+1 215 837 0825"
+      },
+      {
+        "officeCode": "3",
+        "city": "NYC",
+        "country": "USA",
+        "phone": "+1 212 555 3000"
+      },
+      {
+        "officeCode": "4",
+        "city": "Paris",
+        "country": "France",
+        "phone": "+33 14 723 4404"
+      },
+      {
+        "officeCode": "5",
+        "city": "Tokyo",
+        "country": "Japan",
+        "phone": "+81 33 224 5000"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:21:19.041222",
+    "question": "Show all product lines",
+    "decomposition": {
+      "intent": "Retrieve all product lines",
+      "tables": [
+        "productlines"
+      ],
+      "columns": [
+        "productlines.productLine",
+        "productlines.textDescription"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"productLine\", \"textDescription\" FROM \"productlines\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 1.015,
+    "error": null,
+    "result_preview": [
+      {
+        "productLine": "Classic Cars",
+        "textDescription": "Attention car enthusiasts: Make your wildest car ownership dreams come true. Whether you are looking for classic muscle cars, dream sports cars or movie-inspired miniatures, you will find great choices in this category. These replicas feature superb attention to detail and craftsmanship and offer features such as working steering system, opening forward compartment, opening rear trunk with removable spare wheel, 4-wheel independent spring suspension, and so on. The models range in size from 1:10 to 1:24 scale and include numerous limited edition and several out-of-production vehicles. All models include a certificate of authenticity from their manufacturers and come fully assembled and ready for display in the home or office."
+      },
+      {
+        "productLine": "Motorcycles",
+        "textDescription": "Our motorcycles are state of the art replicas of classic as well as contemporary motorcycle legends such as Harley Davidson, Ducati and Vespa. Models contain stunning details such as official logos, rotating wheels, working kickstand, front suspension, gear-shift lever, footbrake lever, and drive chain. Materials used include diecast and plastic. The models range in size from 1:10 to 1:50 scale and include numerous limited edition and several out-of-production vehicles. All models come fully assembled and ready for display in the home or office. Most include a certificate of authenticity."
+      },
+      {
+        "productLine": "Planes",
+        "textDescription": "Unique, diecast airplane and helicopter replicas suitable for collections, as well as home, office or classroom decorations. Models contain stunning details such as official logos and insignias, rotating jet engines and propellers, retractable wheels, and so on. Most come fully assembled and with a certificate of authenticity from their manufacturers."
+      },
+      {
+        "productLine": "Ships",
+        "textDescription": "The perfect holiday or anniversary gift for executives, clients, friends, and family. These handcrafted model ships are unique, stunning works of art that will be treasured for generations! They come fully assembled and ready for display in the home or office. We guarantee the highest quality, and best value."
+      },
+      {
+        "productLine": "Trains",
+        "textDescription": "Model trains are a rewarding hobby for enthusiasts of all ages. Whether you are looking for collectible wooden trains, electric streetcars or locomotives, youwill find a number of great choices for any budget within this category. The interactive aspect of trains makes toy trains perfect for young children. The wooden train sets are ideal for children under the age of 5."
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:21:23.198354",
+    "question": "List all payments",
+    "decomposition": {
+      "intent": "Retrieve all payment records",
+      "tables": [
+        "payments"
+      ],
+      "columns": [
+        "payments.customerNumber",
+        "payments.checkNumber",
+        "payments.paymentDate",
+        "payments.amount"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"p\".\"customerNumber\", \"p\".\"checkNumber\", \"p\".\"paymentDate\", \"p\".\"amount\" FROM \"payments\" AS \"p\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 3.146,
+    "error": null,
+    "result_preview": [
+      {
+        "customerNumber": 103,
+        "checkNumber": "HQ336336",
+        "paymentDate": "2004-10-19",
+        "amount": "6066.78"
+      },
+      {
+        "customerNumber": 103,
+        "checkNumber": "JM555205",
+        "paymentDate": "2003-06-05",
+        "amount": "14571.44"
+      },
+      {
+        "customerNumber": 103,
+        "checkNumber": "OM314933",
+        "paymentDate": "2004-12-18",
+        "amount": "1676.14"
+      },
+      {
+        "customerNumber": 112,
+        "checkNumber": "BO864823",
+        "paymentDate": "2004-12-17",
+        "amount": "14191.12"
+      },
+      {
+        "customerNumber": 112,
+        "checkNumber": "HQ55022",
+        "paymentDate": "2003-06-06",
+        "amount": "32641.98"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:21:25.339592",
+    "question": "Get product names and prices",
+    "decomposition": {
+      "intent": "Retrieve product names and prices",
+      "tables": [
+        "products"
+      ],
+      "columns": [
+        "products.productName",
+        "products.MSRP"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"products\".\"productName\", \"products\".\"MSRP\" FROM \"products\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 1.124,
+    "error": null,
+    "result_preview": [
+      {
+        "productName": "1969 Harley Davidson Ultimate Chopper",
+        "MSRP": "95.70"
+      },
+      {
+        "productName": "1952 Alpine Renault 1300",
+        "MSRP": "214.30"
+      },
+      {
+        "productName": "1996 Moto Guzzi 1100i",
+        "MSRP": "118.94"
+      },
+      {
+        "productName": "2003 Harley-Davidson Eagle Drag Bike",
+        "MSRP": "193.66"
+      },
+      {
+        "productName": "1972 Alfa Romeo GTA",
+        "MSRP": "136.00"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:21:27.568524",
+    "question": "Get customer names and cities",
+    "decomposition": {
+      "intent": "Retrieve customer names and cities",
+      "tables": [
+        "customers"
+      ],
+      "columns": [
+        "customers.customerName",
+        "customers.city"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"customers\".\"customerName\", \"customers\".\"city\" FROM \"customers\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 1.213,
+    "error": null,
+    "result_preview": [
+      {
+        "customerName": "Atelier graphique",
+        "city": "Nantes"
+      },
+      {
+        "customerName": "Signal Gift Stores",
+        "city": "Las Vegas"
+      },
+      {
+        "customerName": "Australian Collectors, Co.",
+        "city": "Melbourne"
+      },
+      {
+        "customerName": "La Rochelle Gifts",
+        "city": "Nantes"
+      },
+      {
+        "customerName": "Baane Mini Imports",
+        "city": "Stavern"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:21:29.831975",
+    "question": "List employee first and last names",
+    "decomposition": {
+      "intent": "List employee names",
+      "tables": [
+        "employees"
+      ],
+      "columns": [
+        "employees.firstName",
+        "employees.lastName"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"firstName\", \"lastName\" FROM \"employees\" AS \"employees\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 1.249,
+    "error": null,
+    "result_preview": [
+      {
+        "firstName": "Diane",
+        "lastName": "Murphy"
+      },
+      {
+        "firstName": "Mary",
+        "lastName": "Patterson"
+      },
+      {
+        "firstName": "Jeff",
+        "lastName": "Firrelli"
+      },
+      {
+        "firstName": "William",
+        "lastName": "Patterson"
+      },
+      {
+        "firstName": "Gerard",
+        "lastName": "Bondur"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:21:32.912817",
+    "question": "Get all order dates",
+    "decomposition": {
+      "intent": "Retrieve all order dates",
+      "tables": [
+        "orders"
+      ],
+      "columns": [
+        "orders.orderDate"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"orderDate\" FROM \"orders\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 2.061,
+    "error": null,
+    "result_preview": [
+      {
+        "orderDate": "2003-01-06"
+      },
+      {
+        "orderDate": "2003-01-09"
+      },
+      {
+        "orderDate": "2003-01-10"
+      },
+      {
+        "orderDate": "2003-01-29"
+      },
+      {
+        "orderDate": "2003-01-31"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:21:35.237948",
+    "question": "Show product vendor list",
+    "decomposition": {
+      "intent": "Retrieve a list of product vendors",
+      "tables": [
+        "products"
+      ],
+      "columns": [
+        "products.productVendor"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT DISTINCT \"productVendor\" FROM \"products\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 1.31,
+    "error": null,
+    "result_preview": [
+      {
+        "productVendor": "Welly Diecast Productions"
+      },
+      {
+        "productVendor": "Motor City Art Classics"
+      },
+      {
+        "productVendor": "Classic Metal Creations"
+      },
+      {
+        "productVendor": "Studio M Art Models"
+      },
+      {
+        "productVendor": "Exoto Designs"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:21:37.693192",
+    "question": "Get all product codes",
+    "decomposition": {
+      "intent": "Retrieve all product codes",
+      "tables": [
+        "products"
+      ],
+      "columns": [
+        "products.productCode"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"p\".\"productCode\" FROM \"products\" AS \"p\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 1.433,
+    "error": null,
+    "result_preview": [
+      {
+        "productCode": "S10_1678"
+      },
+      {
+        "productCode": "S10_1949"
+      },
+      {
+        "productCode": "S10_2016"
+      },
+      {
+        "productCode": "S10_4698"
+      },
+      {
+        "productCode": "S10_4757"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:21:39.831128",
+    "question": "List all countries from offices",
+    "decomposition": {
+      "intent": "List all countries from offices",
+      "tables": [
+        "offices"
+      ],
+      "columns": [
+        "offices.country"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"o\".\"country\" FROM \"offices\" AS \"o\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 1.119,
+    "error": null,
+    "result_preview": [
+      {
+        "country": "USA"
+      },
+      {
+        "country": "USA"
+      },
+      {
+        "country": "USA"
+      },
+      {
+        "country": "France"
+      },
+      {
+        "country": "Japan"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:21:41.522298",
+    "question": "Show all order statuses",
+    "decomposition": {
+      "intent": "Retrieve all unique order statuses",
+      "tables": [
+        "orders"
+      ],
+      "columns": [
+        "orders.status"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT DISTINCT \"status\" FROM \"orders\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 0.681,
+    "error": null,
+    "result_preview": [
+      {
+        "status": "Shipped"
+      },
+      {
+        "status": "In Process"
+      },
+      {
+        "status": "Disputed"
+      },
+      {
+        "status": "Cancelled"
+      },
+      {
+        "status": "Resolved"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:21:44.047431",
+    "question": "Get all payment amounts",
+    "decomposition": {
+      "intent": "Retrieve all payment amounts",
+      "tables": [
+        "payments"
+      ],
+      "columns": [
+        "payments.amount"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"amount\" FROM \"payments\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 1.511,
+    "error": null,
+    "result_preview": [
+      {
+        "amount": "6066.78"
+      },
+      {
+        "amount": "14571.44"
+      },
+      {
+        "amount": "1676.14"
+      },
+      {
+        "amount": "14191.12"
+      },
+      {
+        "amount": "32641.98"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:21:48.662346",
+    "question": "List all job titles",
+    "decomposition": {
+      "intent": "List all job titles",
+      "tables": [
+        "employees"
+      ],
+      "columns": [
+        "employees.jobTitle"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"jobTitle\" FROM \"employees\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 3.602,
+    "error": null,
+    "result_preview": [
+      {
+        "jobTitle": "President"
+      },
+      {
+        "jobTitle": "VP Sales"
+      },
+      {
+        "jobTitle": "VP Marketing"
+      },
+      {
+        "jobTitle": "Sales Manager (APAC)"
+      },
+      {
+        "jobTitle": "Sale Manager (EMEA)"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:21:55.436930",
+    "question": "Get customer phone numbers",
+    "decomposition": {
+      "intent": "Retrieve customer phone numbers",
+      "tables": [
+        "customers",
+        "offices"
+      ],
+      "columns": [
+        "offices.phone"
+      ],
+      "filters": [],
+      "joins": [
+        "customers.salesRepEmployeeNumber = employees.employeeNumber",
+        "employees.officeCode = offices.officeCode"
+      ]
+    },
+    "sql": "SELECT \"offices\".\"phone\" FROM \"customers\" \nJOIN \"employees\" ON \"customers\".\"salesRepEmployeeNumber\" = \"employees\".\"employeeNumber\" \nJOIN \"offices\" ON \"employees\".\"officeCode\" = \"offices\".\"officeCode\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 5.756,
+    "error": null,
+    "result_preview": [
+      {
+        "phone": "+33 14 723 4404"
+      },
+      {
+        "phone": "+1 650 219 4782"
+      },
+      {
+        "phone": "+61 2 9264 2451"
+      },
+      {
+        "phone": "+33 14 723 4404"
+      },
+      {
+        "phone": "+44 20 7877 2041"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:22:04.233403",
+    "question": "Show product MSRP values",
+    "decomposition": {
+      "intent": "Retrieve product MSRP values",
+      "tables": [
+        "products"
+      ],
+      "columns": [
+        "products.MSRP"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"p\".\"MSRP\" FROM \"products\" AS \"p\"",
+    "status": "success",
+    "retries": 1,
+    "total_time": 7.782,
+    "error": null,
+    "result_preview": [
+      {
+        "MSRP": "95.70"
+      },
+      {
+        "MSRP": "214.30"
+      },
+      {
+        "MSRP": "118.94"
+      },
+      {
+        "MSRP": "193.66"
+      },
+      {
+        "MSRP": "136.00"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:22:10.517090",
+    "question": "List order numbers",
+    "decomposition": {
+      "intent": "List all order numbers",
+      "tables": [
+        "orders"
+      ],
+      "columns": [
+        "orders.orderNumber"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"o\".\"orderNumber\" FROM \"orders\" AS \"o\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 5.274,
+    "error": null,
+    "result_preview": [
+      {
+        "orderNumber": 10100
+      },
+      {
+        "orderNumber": 10101
+      },
+      {
+        "orderNumber": 10102
+      },
+      {
+        "orderNumber": 10103
+      },
+      {
+        "orderNumber": 10104
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:22:17.312892",
+    "question": "Get orders with customer names",
+    "decomposition": {
+      "intent": "Retrieve orders with corresponding customer names",
+      "tables": [
+        "orders",
+        "customers"
+      ],
+      "columns": [
+        "orders.orderNumber",
+        "customers.customerName"
+      ],
+      "filters": [],
+      "joins": [
+        "orders.customerNumber = customers.customerNumber"
+      ]
+    },
+    "sql": "SELECT \"orders\".\"orderNumber\", \"customers\".\"customerName\" FROM \"orders\" INNER JOIN \"customers\" ON \"orders\".\"customerNumber\" = \"customers\".\"customerNumber\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 5.777,
+    "error": null,
+    "result_preview": [
+      {
+        "orderNumber": 10100,
+        "customerName": "Online Diecast Creations Co."
+      },
+      {
+        "orderNumber": 10101,
+        "customerName": "Blauer See Auto, Co."
+      },
+      {
+        "orderNumber": 10102,
+        "customerName": "Vitachrome Inc."
+      },
+      {
+        "orderNumber": 10103,
+        "customerName": "Baane Mini Imports"
+      },
+      {
+        "orderNumber": 10104,
+        "customerName": "Euro+ Shopping Channel"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:22:24.183793",
+    "question": "Get employees with office city",
+    "decomposition": {
+      "intent": "Retrieve employees along with their office city",
+      "tables": [
+        "employees",
+        "offices"
+      ],
+      "columns": [
+        "employees.firstName",
+        "employees.lastName",
+        "offices.city"
+      ],
+      "filters": [],
+      "joins": [
+        "employees.officeCode = offices.officeCode"
+      ]
+    },
+    "sql": "SELECT \"e\".\"firstName\", \"e\".\"lastName\", \"o\".\"city\" \nFROM \"employees\" \"e\" \nJOIN \"offices\" \"o\" ON \"e\".\"officeCode\" = \"o\".\"officeCode\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 5.856,
+    "error": null,
+    "result_preview": [
+      {
+        "firstName": "Diane",
+        "lastName": "Murphy",
+        "city": "San Francisco"
+      },
+      {
+        "firstName": "Mary",
+        "lastName": "Patterson",
+        "city": "San Francisco"
+      },
+      {
+        "firstName": "Jeff",
+        "lastName": "Firrelli",
+        "city": "San Francisco"
+      },
+      {
+        "firstName": "William",
+        "lastName": "Patterson",
+        "city": "Sydney"
+      },
+      {
+        "firstName": "Gerard",
+        "lastName": "Bondur",
+        "city": "Paris"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:22:31.836531",
+    "question": "Get payments with customer names",
+    "decomposition": {
+      "intent": "Retrieve payments with corresponding customer names",
+      "tables": [
+        "payments",
+        "customers"
+      ],
+      "columns": [
+        "payments.checkNumber",
+        "payments.paymentDate",
+        "payments.amount",
+        "customers.customerName"
+      ],
+      "filters": [],
+      "joins": [
+        "payments.customerNumber = customers.customerNumber"
+      ]
+    },
+    "sql": "SELECT \"payments\".\"checkNumber\", \"payments\".\"paymentDate\", \"payments\".\"amount\", \"customers\".\"customerName\" \nFROM \"payments\" \nJOIN \"customers\" ON \"payments\".\"customerNumber\" = \"customers\".\"customerNumber\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 6.639,
+    "error": null,
+    "result_preview": [
+      {
+        "checkNumber": "HQ336336",
+        "paymentDate": "2004-10-19",
+        "amount": "6066.78",
+        "customerName": "Atelier graphique"
+      },
+      {
+        "checkNumber": "JM555205",
+        "paymentDate": "2003-06-05",
+        "amount": "14571.44",
+        "customerName": "Atelier graphique"
+      },
+      {
+        "checkNumber": "OM314933",
+        "paymentDate": "2004-12-18",
+        "amount": "1676.14",
+        "customerName": "Atelier graphique"
+      },
+      {
+        "checkNumber": "BO864823",
+        "paymentDate": "2004-12-17",
+        "amount": "14191.12",
+        "customerName": "Signal Gift Stores"
+      },
+      {
+        "checkNumber": "HQ55022",
+        "paymentDate": "2003-06-06",
+        "amount": "32641.98",
+        "customerName": "Signal Gift Stores"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:22:36.664957",
+    "question": "Get order details with product names",
+    "decomposition": {
+      "intent": "Retrieve order details with corresponding product names",
+      "tables": [
+        "orderdetails",
+        "products"
+      ],
+      "columns": [
+        "orderdetails.orderNumber",
+        "orderdetails.productCode",
+        "orderdetails.quantityOrdered",
+        "orderdetails.priceEach",
+        "products.productName"
+      ],
+      "filters": [],
+      "joins": [
+        "orderdetails.productCode = products.productCode"
+      ]
+    },
+    "sql": "SELECT \"orderdetails\".\"orderNumber\", \"orderdetails\".\"productCode\", \"orderdetails\".\"quantityOrdered\", \"orderdetails\".\"priceEach\", \"products\".\"productName\" \nFROM \"orderdetails\" \nJOIN \"products\" ON \"orderdetails\".\"productCode\" = \"products\".\"productCode\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 3.808,
+    "error": null,
+    "result_preview": [
+      {
+        "orderNumber": 10100,
+        "productCode": "S18_1749",
+        "quantityOrdered": 30,
+        "priceEach": "136.00",
+        "productName": "1917 Grand Touring Sedan"
+      },
+      {
+        "orderNumber": 10100,
+        "productCode": "S18_2248",
+        "quantityOrdered": 50,
+        "priceEach": "55.09",
+        "productName": "1911 Ford Town Car"
+      },
+      {
+        "orderNumber": 10100,
+        "productCode": "S18_4409",
+        "quantityOrdered": 22,
+        "priceEach": "75.46",
+        "productName": "1932 Alfa Romeo 8C2300 Spider Sport"
+      },
+      {
+        "orderNumber": 10100,
+        "productCode": "S24_3969",
+        "quantityOrdered": 49,
+        "priceEach": "35.29",
+        "productName": "1936 Mercedes Benz 500k Roadster"
+      },
+      {
+        "orderNumber": 10101,
+        "productCode": "S18_2325",
+        "quantityOrdered": 25,
+        "priceEach": "108.06",
+        "productName": "1932 Model A Ford J-Coupe"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:22:44.002414",
+    "question": "Get products with product line description",
+    "decomposition": {
+      "intent": "Retrieve products with their respective product line descriptions",
+      "tables": [
+        "products",
+        "productlines"
+      ],
+      "columns": [
+        "products.productCode",
+        "products.productName",
+        "productlines.textDescription"
+      ],
+      "filters": [],
+      "joins": [
+        "products.productLine = productlines.productLine"
+      ]
+    },
+    "sql": "SELECT \"p\".\"productCode\", \"p\".\"productName\", \"pl\".\"textDescription\" \nFROM \"products\" \"p\" \nJOIN \"productlines\" \"pl\" ON \"p\".\"productLine\" = \"pl\".\"productLine\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 6.324,
+    "error": null,
+    "result_preview": [
+      {
+        "productCode": "S10_1678",
+        "productName": "1969 Harley Davidson Ultimate Chopper",
+        "textDescription": "Our motorcycles are state of the art replicas of classic as well as contemporary motorcycle legends such as Harley Davidson, Ducati and Vespa. Models contain stunning details such as official logos, rotating wheels, working kickstand, front suspension, gear-shift lever, footbrake lever, and drive chain. Materials used include diecast and plastic. The models range in size from 1:10 to 1:50 scale and include numerous limited edition and several out-of-production vehicles. All models come fully assembled and ready for display in the home or office. Most include a certificate of authenticity."
+      },
+      {
+        "productCode": "S10_1949",
+        "productName": "1952 Alpine Renault 1300",
+        "textDescription": "Attention car enthusiasts: Make your wildest car ownership dreams come true. Whether you are looking for classic muscle cars, dream sports cars or movie-inspired miniatures, you will find great choices in this category. These replicas feature superb attention to detail and craftsmanship and offer features such as working steering system, opening forward compartment, opening rear trunk with removable spare wheel, 4-wheel independent spring suspension, and so on. The models range in size from 1:10 to 1:24 scale and include numerous limited edition and several out-of-production vehicles. All models include a certificate of authenticity from their manufacturers and come fully assembled and ready for display in the home or office."
+      },
+      {
+        "productCode": "S10_2016",
+        "productName": "1996 Moto Guzzi 1100i",
+        "textDescription": "Our motorcycles are state of the art replicas of classic as well as contemporary motorcycle legends such as Harley Davidson, Ducati and Vespa. Models contain stunning details such as official logos, rotating wheels, working kickstand, front suspension, gear-shift lever, footbrake lever, and drive chain. Materials used include diecast and plastic. The models range in size from 1:10 to 1:50 scale and include numerous limited edition and several out-of-production vehicles. All models come fully assembled and ready for display in the home or office. Most include a certificate of authenticity."
+      },
+      {
+        "productCode": "S10_4698",
+        "productName": "2003 Harley-Davidson Eagle Drag Bike",
+        "textDescription": "Our motorcycles are state of the art replicas of classic as well as contemporary motorcycle legends such as Harley Davidson, Ducati and Vespa. Models contain stunning details such as official logos, rotating wheels, working kickstand, front suspension, gear-shift lever, footbrake lever, and drive chain. Materials used include diecast and plastic. The models range in size from 1:10 to 1:50 scale and include numerous limited edition and several out-of-production vehicles. All models come fully assembled and ready for display in the home or office. Most include a certificate of authenticity."
+      },
+      {
+        "productCode": "S10_4757",
+        "productName": "1972 Alfa Romeo GTA",
+        "textDescription": "Attention car enthusiasts: Make your wildest car ownership dreams come true. Whether you are looking for classic muscle cars, dream sports cars or movie-inspired miniatures, you will find great choices in this category. These replicas feature superb attention to detail and craftsmanship and offer features such as working steering system, opening forward compartment, opening rear trunk with removable spare wheel, 4-wheel independent spring suspension, and so on. The models range in size from 1:10 to 1:24 scale and include numerous limited edition and several out-of-production vehicles. All models include a certificate of authenticity from their manufacturers and come fully assembled and ready for display in the home or office."
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:22:47.973494",
+    "question": "Get customers with sales rep names",
+    "decomposition": {
+      "intent": "Retrieve customer information along with their sales representative names",
+      "tables": [
+        "customers",
+        "employees"
+      ],
+      "columns": [
+        "customers.customerNumber",
+        "customers.customerName",
+        "employees.firstName",
+        "employees.lastName"
+      ],
+      "filters": [],
+      "joins": [
+        "customers.salesRepEmployeeNumber = employees.employeeNumber"
+      ]
+    },
+    "sql": "SELECT \"customers\".\"customerNumber\", \"customers\".\"customerName\", \"employees\".\"firstName\", \"employees\".\"lastName\" \nFROM \"customers\" \nJOIN \"employees\" ON \"customers\".\"salesRepEmployeeNumber\" = \"employees\".\"employeeNumber\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 2.953,
+    "error": null,
+    "result_preview": [
+      {
+        "customerNumber": 103,
+        "customerName": "Atelier graphique",
+        "firstName": "Gerard",
+        "lastName": "Hernandez"
+      },
+      {
+        "customerNumber": 112,
+        "customerName": "Signal Gift Stores",
+        "firstName": "Leslie",
+        "lastName": "Thompson"
+      },
+      {
+        "customerNumber": 114,
+        "customerName": "Australian Collectors, Co.",
+        "firstName": "Andy",
+        "lastName": "Fixter"
+      },
+      {
+        "customerNumber": 119,
+        "customerName": "La Rochelle Gifts",
+        "firstName": "Gerard",
+        "lastName": "Hernandez"
+      },
+      {
+        "customerNumber": 121,
+        "customerName": "Baane Mini Imports",
+        "firstName": "Barry",
+        "lastName": "Jones"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:22:53.545963",
+    "question": "Get orders with customer city",
+    "decomposition": {
+      "intent": "Retrieve orders with customer city information",
+      "tables": [
+        "orders",
+        "customers"
+      ],
+      "columns": [
+        "orders.orderNumber",
+        "customers.city"
+      ],
+      "filters": [],
+      "joins": [
+        "orders.customerNumber = customers.customerNumber"
+      ]
+    },
+    "sql": "SELECT \"orders\".\"orderNumber\", \"customers\".\"city\" FROM \"orders\" JOIN \"customers\" ON \"orders\".\"customerNumber\" = \"customers\".\"customerNumber\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 4.561,
+    "error": null,
+    "result_preview": [
+      {
+        "orderNumber": 10100,
+        "city": "Nashua"
+      },
+      {
+        "orderNumber": 10101,
+        "city": "Frankfurt"
+      },
+      {
+        "orderNumber": 10102,
+        "city": "NYC"
+      },
+      {
+        "orderNumber": 10103,
+        "city": "Stavern"
+      },
+      {
+        "orderNumber": 10104,
+        "city": "Madrid"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:23:00.665421",
+    "question": "Get employees and their manager",
+    "decomposition": {
+      "intent": "Get employees and their manager",
+      "tables": [
+        "employees"
+      ],
+      "columns": [
+        "employees.employeeNumber",
+        "employees.firstName",
+        "employees.lastName",
+        "employees.reportsTo"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"employees\".\"employeeNumber\", \"employees\".\"firstName\", \"employees\".\"lastName\", \"employees\".\"reportsTo\" FROM \"employees\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 6.091,
+    "error": null,
+    "result_preview": [
+      {
+        "employeeNumber": 1002,
+        "firstName": "Diane",
+        "lastName": "Murphy",
+        "reportsTo": null
+      },
+      {
+        "employeeNumber": 1056,
+        "firstName": "Mary",
+        "lastName": "Patterson",
+        "reportsTo": 1002
+      },
+      {
+        "employeeNumber": 1076,
+        "firstName": "Jeff",
+        "lastName": "Firrelli",
+        "reportsTo": 1002
+      },
+      {
+        "employeeNumber": 1088,
+        "firstName": "William",
+        "lastName": "Patterson",
+        "reportsTo": 1056
+      },
+      {
+        "employeeNumber": 1102,
+        "firstName": "Gerard",
+        "lastName": "Bondur",
+        "reportsTo": 1056
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:23:07.206540",
+    "question": "Get orderdetails with product vendor",
+    "decomposition": {
+      "intent": "Get order details with product vendor information",
+      "tables": [
+        "orderdetails",
+        "products"
+      ],
+      "columns": [
+        "orderdetails.orderNumber",
+        "orderdetails.productCode",
+        "orderdetails.quantityOrdered",
+        "orderdetails.priceEach",
+        "products.productVendor"
+      ],
+      "filters": [],
+      "joins": [
+        "orderdetails.productCode = products.productCode"
+      ]
+    },
+    "sql": "SELECT \"orderdetails\".\"orderNumber\", \"orderdetails\".\"productCode\", \"orderdetails\".\"quantityOrdered\", \"orderdetails\".\"priceEach\", \"products\".\"productVendor\" \nFROM \"orderdetails\" \nJOIN \"products\" ON \"orderdetails\".\"productCode\" = \"products\".\"productCode\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 5.52,
+    "error": null,
+    "result_preview": [
+      {
+        "orderNumber": 10100,
+        "productCode": "S18_1749",
+        "quantityOrdered": 30,
+        "priceEach": "136.00",
+        "productVendor": "Welly Diecast Productions"
+      },
+      {
+        "orderNumber": 10100,
+        "productCode": "S18_2248",
+        "quantityOrdered": 50,
+        "priceEach": "55.09",
+        "productVendor": "Motor City Art Classics"
+      },
+      {
+        "orderNumber": 10100,
+        "productCode": "S18_4409",
+        "quantityOrdered": 22,
+        "priceEach": "75.46",
+        "productVendor": "Exoto Designs"
+      },
+      {
+        "orderNumber": 10100,
+        "productCode": "S24_3969",
+        "quantityOrdered": 49,
+        "priceEach": "35.29",
+        "productVendor": "Red Start Diecast"
+      },
+      {
+        "orderNumber": 10101,
+        "productCode": "S18_2325",
+        "quantityOrdered": 25,
+        "priceEach": "108.06",
+        "productVendor": "Autoart Studio Design"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:23:14.104315",
+    "question": "Get payments with customer country",
+    "decomposition": {
+      "intent": "Retrieve payments with customer country information",
+      "tables": [
+        "payments",
+        "customers"
+      ],
+      "columns": [
+        "payments.checkNumber",
+        "payments.paymentDate",
+        "payments.amount",
+        "customers.country"
+      ],
+      "filters": [],
+      "joins": [
+        "payments.customerNumber = customers.customerNumber"
+      ]
+    },
+    "sql": "SELECT \"payments\".\"checkNumber\", \"payments\".\"paymentDate\", \"payments\".\"amount\", \"customers\".\"country\" \nFROM \"payments\" \nJOIN \"customers\" ON \"payments\".\"customerNumber\" = \"customers\".\"customerNumber\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 5.881,
+    "error": null,
+    "result_preview": [
+      {
+        "checkNumber": "HQ336336",
+        "paymentDate": "2004-10-19",
+        "amount": "6066.78",
+        "country": "France"
+      },
+      {
+        "checkNumber": "JM555205",
+        "paymentDate": "2003-06-05",
+        "amount": "14571.44",
+        "country": "France"
+      },
+      {
+        "checkNumber": "OM314933",
+        "paymentDate": "2004-12-18",
+        "amount": "1676.14",
+        "country": "France"
+      },
+      {
+        "checkNumber": "BO864823",
+        "paymentDate": "2004-12-17",
+        "amount": "14191.12",
+        "country": "USA"
+      },
+      {
+        "checkNumber": "HQ55022",
+        "paymentDate": "2003-06-06",
+        "amount": "32641.98",
+        "country": "USA"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:23:20.560053",
+    "question": "Count customers per country",
+    "decomposition": {
+      "intent": "count customers by country",
+      "tables": [
+        "customers"
+      ],
+      "columns": [
+        "customers.country",
+        "customers.customerNumber"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"country\", COUNT(\"customerNumber\") FROM \"customers\" GROUP BY \"country\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 5.434,
+    "error": null,
+    "result_preview": [
+      {
+        "country": "Switzerland",
+        "count": 3
+      },
+      {
+        "country": "New Zealand",
+        "count": 4
+      },
+      {
+        "country": "Italy",
+        "count": 4
+      },
+      {
+        "country": "Russia",
+        "count": 1
+      },
+      {
+        "country": "Sweden",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:23:28.108190",
+    "question": "Total payments per customer",
+    "decomposition": {
+      "intent": "calculate total payments per customer",
+      "tables": [
+        "customers",
+        "payments"
+      ],
+      "columns": [
+        "customers.customerNumber",
+        "payments.amount"
+      ],
+      "filters": [],
+      "joins": [
+        "customers.customerNumber = payments.customerNumber"
+      ]
+    },
+    "sql": "SELECT \"c\".\"customerNumber\", SUM(\"p\".\"amount\") AS \"total_payments\" \nFROM \"customers\" \"c\" \nJOIN \"payments\" \"p\" ON \"c\".\"customerNumber\" = \"p\".\"customerNumber\" \nGROUP BY \"c\".\"customerNumber\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 6.524,
+    "error": null,
+    "result_preview": [
+      {
+        "customerNumber": 455,
+        "total_payments": "70378.65"
+      },
+      {
+        "customerNumber": 448,
+        "total_payments": "76776.44"
+      },
+      {
+        "customerNumber": 146,
+        "total_payments": "130305.35"
+      },
+      {
+        "customerNumber": 350,
+        "total_payments": "71547.53"
+      },
+      {
+        "customerNumber": 382,
+        "total_payments": "85060.00"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:23:32.893735",
+    "question": "Number of orders per status",
+    "decomposition": {
+      "intent": "count orders by status",
+      "tables": [
+        "orders"
+      ],
+      "columns": [
+        "orders.status",
+        "orders.orderNumber"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"status\", COUNT(\"orderNumber\") FROM \"orders\" GROUP BY \"status\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 3.769,
+    "error": null,
+    "result_preview": [
+      {
+        "status": "Shipped",
+        "count": 303
+      },
+      {
+        "status": "In Process",
+        "count": 6
+      },
+      {
+        "status": "Disputed",
+        "count": 3
+      },
+      {
+        "status": "Cancelled",
+        "count": 6
+      },
+      {
+        "status": "Resolved",
+        "count": 4
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:23:39.929164",
+    "question": "Products per product line",
+    "decomposition": {
+      "intent": "Retrieve products grouped by product line",
+      "tables": [
+        "products",
+        "productlines"
+      ],
+      "columns": [
+        "productlines.productLine",
+        "products.productName"
+      ],
+      "filters": [],
+      "joins": [
+        "products.productLine = productlines.productLine"
+      ]
+    },
+    "sql": "SELECT \"productlines\".\"productLine\", \"products\".\"productName\" \nFROM \"products\" \nJOIN \"productlines\" \nON \"products\".\"productLine\" = \"productlines\".\"productLine\" \nORDER BY \"productlines\".\"productLine\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 6.007,
+    "error": null,
+    "result_preview": [
+      {
+        "productLine": "Classic Cars",
+        "productName": "1948 Porsche Type 356 Roadster"
+      },
+      {
+        "productLine": "Classic Cars",
+        "productName": "1992 Ferrari 360 Spider red"
+      },
+      {
+        "productLine": "Classic Cars",
+        "productName": "1985 Toyota Supra"
+      },
+      {
+        "productLine": "Classic Cars",
+        "productName": "1976 Ford Gran Torino"
+      },
+      {
+        "productLine": "Classic Cars",
+        "productName": "1969 Dodge Super Bee"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:23:46.222648",
+    "question": "Employees per office",
+    "decomposition": {
+      "intent": "get the number of employees per office",
+      "tables": [
+        "employees",
+        "offices"
+      ],
+      "columns": [
+        "offices.officeCode",
+        "employees.employeeNumber",
+        "employees.firstName",
+        "employees.lastName"
+      ],
+      "filters": [],
+      "joins": [
+        "employees.officeCode = offices.officeCode"
+      ]
+    },
+    "sql": "SELECT \"offices\".\"officeCode\", COUNT(\"employees\".\"employeeNumber\") \nFROM \"employees\" \nJOIN \"offices\" ON \"employees\".\"officeCode\" = \"offices\".\"officeCode\" \nGROUP BY \"offices\".\"officeCode\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 5.272,
+    "error": null,
+    "result_preview": [
+      {
+        "officeCode": "6",
+        "count": 4
+      },
+      {
+        "officeCode": "2",
+        "count": 2
+      },
+      {
+        "officeCode": "4",
+        "count": 5
+      },
+      {
+        "officeCode": "7",
+        "count": 2
+      },
+      {
+        "officeCode": "5",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:23:52.982902",
+    "question": "Total stock per product vendor",
+    "decomposition": {
+      "intent": "calculate total stock per product vendor",
+      "tables": [
+        "products",
+        "productlines"
+      ],
+      "columns": [
+        "products.productVendor",
+        "products.quantityInStock"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"p\".\"productVendor\", SUM(\"p\".\"quantityInStock\") \nFROM \"products\" \"p\" \nGROUP BY \"p\".\"productVendor\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 5.735,
+    "error": null,
+    "result_preview": [
+      {
+        "productVendor": "Welly Diecast Productions",
+        "sum": 45095
+      },
+      {
+        "productVendor": "Motor City Art Classics",
+        "sum": 43105
+      },
+      {
+        "productVendor": "Classic Metal Creations",
+        "sum": 45408
+      },
+      {
+        "productVendor": "Studio M Art Models",
+        "sum": 42253
+      },
+      {
+        "productVendor": "Exoto Designs",
+        "sum": 44166
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:23:59.288111",
+    "question": "Average buy price per product line",
+    "decomposition": {
+      "intent": "calculate average buy price per product line",
+      "tables": [
+        "products",
+        "productlines"
+      ],
+      "columns": [
+        "products.buyPrice",
+        "productlines.productLine"
+      ],
+      "filters": [],
+      "joins": [
+        "products.productLine = productlines.productLine"
+      ]
+    },
+    "sql": "SELECT AVG(p.\"buyPrice\"), pl.\"productLine\" FROM \"products\" p JOIN \"productlines\" pl ON p.\"productLine\" = pl.\"productLine\" GROUP BY pl.\"productLine\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 5.205,
+    "error": null,
+    "result_preview": [
+      {
+        "avg": "64.4463157894736842",
+        "productLine": "Classic Cars"
+      },
+      {
+        "avg": "43.9233333333333333",
+        "productLine": "Trains"
+      },
+      {
+        "avg": "50.6853846153846154",
+        "productLine": "Motorcycles"
+      },
+      {
+        "avg": "47.0077777777777778",
+        "productLine": "Ships"
+      },
+      {
+        "avg": "56.3290909090909091",
+        "productLine": "Trucks and Buses"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:24:08.551703",
+    "question": "Orders per customer",
+    "decomposition": {
+      "intent": "retrieve the number of orders for each customer",
+      "tables": [
+        "orders",
+        "customers"
+      ],
+      "columns": [
+        "orders.orderNumber",
+        "customers.customerName"
+      ],
+      "filters": [],
+      "joins": [
+        "orders.customerNumber = customers.customerNumber"
+      ]
+    },
+    "sql": "SELECT \"orders\".\"orderNumber\", \"customers\".\"customerName\" \nFROM \"orders\" \nJOIN \"customers\" ON \"orders\".\"customerNumber\" = \"customers\".\"customerNumber\" \nGROUP BY \"orders\".\"orderNumber\", \"customers\".\"customerName\" \nORDER BY COUNT(\"orders\".\"orderNumber\") DESC;",
+    "status": "success",
+    "retries": 1,
+    "total_time": 8.242,
+    "error": null,
+    "result_preview": [
+      {
+        "orderNumber": 10290,
+        "customerName": "Auto-Moto Classics Inc."
+      },
+      {
+        "orderNumber": 10419,
+        "customerName": "Salzburg Collectables"
+      },
+      {
+        "orderNumber": 10285,
+        "customerName": "Marta's Replicas Co."
+      },
+      {
+        "orderNumber": 10309,
+        "customerName": "Baane Mini Imports"
+      },
+      {
+        "orderNumber": 10327,
+        "customerName": "Danish Wholesale Imports"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:24:13.058368",
+    "question": "Max MSRP per product line",
+    "decomposition": {
+      "intent": "Find the maximum MSRP for each product line",
+      "tables": [
+        "products",
+        "productlines"
+      ],
+      "columns": [
+        "products.productLine",
+        "products.MSRP"
+      ],
+      "filters": [],
+      "joins": [
+        "products.productLine = productlines.productLine"
+      ]
+    },
+    "sql": "SELECT \"p\".\"productLine\", MAX(\"p\".\"MSRP\") \nFROM \"products\" \"p\" \nJOIN \"productlines\" \"pl\" ON \"p\".\"productLine\" = \"pl\".\"productLine\" \nGROUP BY \"p\".\"productLine\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 3.489,
+    "error": null,
+    "result_preview": [
+      {
+        "productLine": "Classic Cars",
+        "max": "214.30"
+      },
+      {
+        "productLine": "Trains",
+        "max": "100.84"
+      },
+      {
+        "productLine": "Planes",
+        "max": "157.69"
+      },
+      {
+        "productLine": "Trucks and Buses",
+        "max": "136.67"
+      },
+      {
+        "productLine": "Vintage Cars",
+        "max": "170.00"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:24:17.760981",
+    "question": "Min buy price per vendor",
+    "decomposition": {
+      "intent": "Find the minimum buy price per product vendor",
+      "tables": [
+        "products"
+      ],
+      "columns": [
+        "products.productVendor",
+        "products.buyPrice"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"productVendor\", MIN(\"buyPrice\") FROM \"products\" GROUP BY \"productVendor\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 3.69,
+    "error": null,
+    "result_preview": [
+      {
+        "productVendor": "Welly Diecast Productions",
+        "min": "24.23"
+      },
+      {
+        "productVendor": "Motor City Art Classics",
+        "min": "22.57"
+      },
+      {
+        "productVendor": "Classic Metal Creations",
+        "min": "20.61"
+      },
+      {
+        "productVendor": "Studio M Art Models",
+        "min": "23.14"
+      },
+      {
+        "productVendor": "Exoto Designs",
+        "min": "43.26"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:24:24.099791",
+    "question": "Total number of customers",
+    "decomposition": {
+      "intent": "count all customers",
+      "tables": [
+        "customers"
+      ],
+      "columns": [
+        "customers.customerNumber"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT COUNT(\"c\".\"customerNumber\") FROM \"customers\" AS \"c\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 5.317,
+    "error": null,
+    "result_preview": [
+      {
+        "count": 122
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:24:30.285459",
+    "question": "Total number of products",
+    "decomposition": {
+      "intent": "count the total number of products",
+      "tables": [
+        "products"
+      ],
+      "columns": [
+        "products.productCode"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT COUNT(\"p\".\"productCode\") FROM \"products\" AS \"p\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 5.138,
+    "error": null,
+    "result_preview": [
+      {
+        "count": 110
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:24:36.689574",
+    "question": "Total revenue from payments",
+    "decomposition": {
+      "intent": "calculate total revenue from payments",
+      "tables": [
+        "payments"
+      ],
+      "columns": [
+        "payments.amount"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT SUM(\"p\".\"amount\") AS \"total_revenue\" FROM \"payments\" AS \"p\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 5.382,
+    "error": null,
+    "result_preview": [
+      {
+        "total_revenue": "8853839.23"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:24:42.773011",
+    "question": "Average product price",
+    "decomposition": {
+      "intent": "calculate average product price",
+      "tables": [
+        "products"
+      ],
+      "columns": [
+        "products.MSRP"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT AVG(\"p\".\"MSRP\") FROM \"products\" AS \"p\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 5.058,
+    "error": null,
+    "result_preview": [
+      {
+        "avg": "100.4387272727272727"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:24:49.260142",
+    "question": "Max payment amount",
+    "decomposition": {
+      "intent": "find the maximum payment amount",
+      "tables": [
+        "payments"
+      ],
+      "columns": [
+        "payments.amount"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT MAX(\"amount\") FROM \"payments\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 5.464,
+    "error": null,
+    "result_preview": [
+      {
+        "max": "120166.58"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:27:16.649621",
+    "question": "List all products",
+    "decomposition": {
+      "intent": "Retrieve all products",
+      "tables": [
+        "products"
+      ],
+      "columns": [
+        "products.productCode",
+        "products.productName",
+        "products.productLine",
+        "products.buyPrice",
+        "products.MSRP",
+        "products.quantityInStock",
+        "products.productVendor"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"p\".\"productCode\", \"p\".\"productName\", \"p\".\"productLine\", \"p\".\"buyPrice\", \"p\".\"MSRP\", \"p\".\"quantityInStock\", \"p\".\"productVendor\" \nFROM \"products\" AS \"p\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 1.933,
+    "error": null,
+    "result_preview": [
+      {
+        "productCode": "S10_1678",
+        "productName": "1969 Harley Davidson Ultimate Chopper",
+        "productLine": "Motorcycles",
+        "buyPrice": "48.81",
+        "MSRP": "95.70",
+        "quantityInStock": 7933,
+        "productVendor": "Min Lin Diecast"
+      },
+      {
+        "productCode": "S10_1949",
+        "productName": "1952 Alpine Renault 1300",
+        "productLine": "Classic Cars",
+        "buyPrice": "98.58",
+        "MSRP": "214.30",
+        "quantityInStock": 7305,
+        "productVendor": "Classic Metal Creations"
+      },
+      {
+        "productCode": "S10_2016",
+        "productName": "1996 Moto Guzzi 1100i",
+        "productLine": "Motorcycles",
+        "buyPrice": "68.99",
+        "MSRP": "118.94",
+        "quantityInStock": 6625,
+        "productVendor": "Highway 66 Mini Classics"
+      },
+      {
+        "productCode": "S10_4698",
+        "productName": "2003 Harley-Davidson Eagle Drag Bike",
+        "productLine": "Motorcycles",
+        "buyPrice": "91.02",
+        "MSRP": "193.66",
+        "quantityInStock": 5582,
+        "productVendor": "Red Start Diecast"
+      },
+      {
+        "productCode": "S10_4757",
+        "productName": "1972 Alfa Romeo GTA",
+        "productLine": "Classic Cars",
+        "buyPrice": "85.68",
+        "MSRP": "136.00",
+        "quantityInStock": 3252,
+        "productVendor": "Motor City Art Classics"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:27:19.556019",
+    "question": "Get all customers",
+    "decomposition": {
+      "intent": "Retrieve all customer information",
+      "tables": [
+        "customers"
+      ],
+      "columns": [
+        "customers.customerNumber",
+        "customers.customerName",
+        "customers.city",
+        "customers.country",
+        "customers.salesRepEmployeeNumber"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"c\".\"customerNumber\", \"c\".\"customerName\", \"c\".\"city\", \"c\".\"country\", \"c\".\"salesRepEmployeeNumber\" \nFROM \"customers\" AS \"c\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 1.885,
+    "error": null,
+    "result_preview": [
+      {
+        "customerNumber": 103,
+        "customerName": "Atelier graphique",
+        "city": "Nantes",
+        "country": "France",
+        "salesRepEmployeeNumber": 1370
+      },
+      {
+        "customerNumber": 112,
+        "customerName": "Signal Gift Stores",
+        "city": "Las Vegas",
+        "country": "USA",
+        "salesRepEmployeeNumber": 1166
+      },
+      {
+        "customerNumber": 114,
+        "customerName": "Australian Collectors, Co.",
+        "city": "Melbourne",
+        "country": "Australia",
+        "salesRepEmployeeNumber": 1611
+      },
+      {
+        "customerNumber": 119,
+        "customerName": "La Rochelle Gifts",
+        "city": "Nantes",
+        "country": "France",
+        "salesRepEmployeeNumber": 1370
+      },
+      {
+        "customerNumber": 121,
+        "customerName": "Baane Mini Imports",
+        "city": "Stavern",
+        "country": "Norway",
+        "salesRepEmployeeNumber": 1504
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:27:22.454971",
+    "question": "Show all orders",
+    "decomposition": {
+      "intent": "Retrieve all orders",
+      "tables": [
+        "orders"
+      ],
+      "columns": [
+        "orders.orderNumber",
+        "orders.orderDate",
+        "orders.requiredDate",
+        "orders.shippedDate",
+        "orders.status",
+        "orders.customerNumber"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"o\".\"orderNumber\", \"o\".\"orderDate\", \"o\".\"requiredDate\", \"o\".\"shippedDate\", \"o\".\"status\", \"o\".\"customerNumber\" \nFROM \"orders\" AS \"o\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 1.873,
+    "error": null,
+    "result_preview": [
+      {
+        "orderNumber": 10100,
+        "orderDate": "2003-01-06",
+        "requiredDate": "2003-01-13",
+        "shippedDate": "2003-01-10",
+        "status": "Shipped",
+        "customerNumber": 363
+      },
+      {
+        "orderNumber": 10101,
+        "orderDate": "2003-01-09",
+        "requiredDate": "2003-01-18",
+        "shippedDate": "2003-01-11",
+        "status": "Shipped",
+        "customerNumber": 128
+      },
+      {
+        "orderNumber": 10102,
+        "orderDate": "2003-01-10",
+        "requiredDate": "2003-01-18",
+        "shippedDate": "2003-01-14",
+        "status": "Shipped",
+        "customerNumber": 181
+      },
+      {
+        "orderNumber": 10103,
+        "orderDate": "2003-01-29",
+        "requiredDate": "2003-02-07",
+        "shippedDate": "2003-02-02",
+        "status": "Shipped",
+        "customerNumber": 121
+      },
+      {
+        "orderNumber": 10104,
+        "orderDate": "2003-01-31",
+        "requiredDate": "2003-02-09",
+        "shippedDate": "2003-02-01",
+        "status": "Shipped",
+        "customerNumber": 141
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:27:24.867877",
+    "question": "List all employees",
+    "decomposition": {
+      "intent": "List all employees",
+      "tables": [
+        "employees"
+      ],
+      "columns": [
+        "employees.employeeNumber",
+        "employees.firstName",
+        "employees.lastName",
+        "employees.jobTitle",
+        "employees.officeCode",
+        "employees.reportsTo"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"e\".\"employeeNumber\", \"e\".\"firstName\", \"e\".\"lastName\", \"e\".\"jobTitle\", \"e\".\"officeCode\", \"e\".\"reportsTo\" FROM \"employees\" \"e\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 1.389,
+    "error": null,
+    "result_preview": [
+      {
+        "employeeNumber": 1002,
+        "firstName": "Diane",
+        "lastName": "Murphy",
+        "jobTitle": "President",
+        "officeCode": "1",
+        "reportsTo": null
+      },
+      {
+        "employeeNumber": 1056,
+        "firstName": "Mary",
+        "lastName": "Patterson",
+        "jobTitle": "VP Sales",
+        "officeCode": "1",
+        "reportsTo": 1002
+      },
+      {
+        "employeeNumber": 1076,
+        "firstName": "Jeff",
+        "lastName": "Firrelli",
+        "jobTitle": "VP Marketing",
+        "officeCode": "1",
+        "reportsTo": 1002
+      },
+      {
+        "employeeNumber": 1088,
+        "firstName": "William",
+        "lastName": "Patterson",
+        "jobTitle": "Sales Manager (APAC)",
+        "officeCode": "6",
+        "reportsTo": 1056
+      },
+      {
+        "employeeNumber": 1102,
+        "firstName": "Gerard",
+        "lastName": "Bondur",
+        "jobTitle": "Sale Manager (EMEA)",
+        "officeCode": "4",
+        "reportsTo": 1056
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:27:26.697370",
+    "question": "Get all offices",
+    "decomposition": {
+      "intent": "Retrieve all offices",
+      "tables": [
+        "offices"
+      ],
+      "columns": [
+        "offices.officeCode",
+        "offices.city",
+        "offices.country",
+        "offices.phone"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"o\".\"officeCode\", \"o\".\"city\", \"o\".\"country\", \"o\".\"phone\" FROM \"offices\" AS \"o\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 0.778,
+    "error": null,
+    "result_preview": [
+      {
+        "officeCode": "1",
+        "city": "San Francisco",
+        "country": "USA",
+        "phone": "+1 650 219 4782"
+      },
+      {
+        "officeCode": "2",
+        "city": "Boston",
+        "country": "USA",
+        "phone": "+1 215 837 0825"
+      },
+      {
+        "officeCode": "3",
+        "city": "NYC",
+        "country": "USA",
+        "phone": "+1 212 555 3000"
+      },
+      {
+        "officeCode": "4",
+        "city": "Paris",
+        "country": "France",
+        "phone": "+33 14 723 4404"
+      },
+      {
+        "officeCode": "5",
+        "city": "Tokyo",
+        "country": "Japan",
+        "phone": "+81 33 224 5000"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:27:28.869353",
+    "question": "Show all product lines",
+    "decomposition": {
+      "intent": "Retrieve all product lines",
+      "tables": [
+        "productlines"
+      ],
+      "columns": [
+        "productlines.productLine",
+        "productlines.textDescription"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"productlines\".\"productLine\", \"productlines\".\"textDescription\" FROM \"productlines\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 1.143,
+    "error": null,
+    "result_preview": [
+      {
+        "productLine": "Classic Cars",
+        "textDescription": "Attention car enthusiasts: Make your wildest car ownership dreams come true. Whether you are looking for classic muscle cars, dream sports cars or movie-inspired miniatures, you will find great choices in this category. These replicas feature superb attention to detail and craftsmanship and offer features such as working steering system, opening forward compartment, opening rear trunk with removable spare wheel, 4-wheel independent spring suspension, and so on. The models range in size from 1:10 to 1:24 scale and include numerous limited edition and several out-of-production vehicles. All models include a certificate of authenticity from their manufacturers and come fully assembled and ready for display in the home or office."
+      },
+      {
+        "productLine": "Motorcycles",
+        "textDescription": "Our motorcycles are state of the art replicas of classic as well as contemporary motorcycle legends such as Harley Davidson, Ducati and Vespa. Models contain stunning details such as official logos, rotating wheels, working kickstand, front suspension, gear-shift lever, footbrake lever, and drive chain. Materials used include diecast and plastic. The models range in size from 1:10 to 1:50 scale and include numerous limited edition and several out-of-production vehicles. All models come fully assembled and ready for display in the home or office. Most include a certificate of authenticity."
+      },
+      {
+        "productLine": "Planes",
+        "textDescription": "Unique, diecast airplane and helicopter replicas suitable for collections, as well as home, office or classroom decorations. Models contain stunning details such as official logos and insignias, rotating jet engines and propellers, retractable wheels, and so on. Most come fully assembled and with a certificate of authenticity from their manufacturers."
+      },
+      {
+        "productLine": "Ships",
+        "textDescription": "The perfect holiday or anniversary gift for executives, clients, friends, and family. These handcrafted model ships are unique, stunning works of art that will be treasured for generations! They come fully assembled and ready for display in the home or office. We guarantee the highest quality, and best value."
+      },
+      {
+        "productLine": "Trains",
+        "textDescription": "Model trains are a rewarding hobby for enthusiasts of all ages. Whether you are looking for collectible wooden trains, electric streetcars or locomotives, youwill find a number of great choices for any budget within this category. The interactive aspect of trains makes toy trains perfect for young children. The wooden train sets are ideal for children under the age of 5."
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:27:30.460337",
+    "question": "List all payments",
+    "decomposition": {
+      "intent": "Retrieve all payment records",
+      "tables": [
+        "payments"
+      ],
+      "columns": [
+        "payments.customerNumber",
+        "payments.checkNumber",
+        "payments.paymentDate",
+        "payments.amount"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"p\".\"customerNumber\", \"p\".\"checkNumber\", \"p\".\"paymentDate\", \"p\".\"amount\" FROM \"payments\" AS \"p\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 0.565,
+    "error": null,
+    "result_preview": [
+      {
+        "customerNumber": 103,
+        "checkNumber": "HQ336336",
+        "paymentDate": "2004-10-19",
+        "amount": "6066.78"
+      },
+      {
+        "customerNumber": 103,
+        "checkNumber": "JM555205",
+        "paymentDate": "2003-06-05",
+        "amount": "14571.44"
+      },
+      {
+        "customerNumber": 103,
+        "checkNumber": "OM314933",
+        "paymentDate": "2004-12-18",
+        "amount": "1676.14"
+      },
+      {
+        "customerNumber": 112,
+        "checkNumber": "BO864823",
+        "paymentDate": "2004-12-17",
+        "amount": "14191.12"
+      },
+      {
+        "customerNumber": 112,
+        "checkNumber": "HQ55022",
+        "paymentDate": "2003-06-06",
+        "amount": "32641.98"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:27:32.635490",
+    "question": "Get product names and prices",
+    "decomposition": {
+      "intent": "Retrieve product names and prices",
+      "tables": [
+        "products"
+      ],
+      "columns": [
+        "products.productName",
+        "products.MSRP"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"products\".\"productName\", \"products\".\"MSRP\" FROM \"products\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 1.149,
+    "error": null,
+    "result_preview": [
+      {
+        "productName": "1969 Harley Davidson Ultimate Chopper",
+        "MSRP": "95.70"
+      },
+      {
+        "productName": "1952 Alpine Renault 1300",
+        "MSRP": "214.30"
+      },
+      {
+        "productName": "1996 Moto Guzzi 1100i",
+        "MSRP": "118.94"
+      },
+      {
+        "productName": "2003 Harley-Davidson Eagle Drag Bike",
+        "MSRP": "193.66"
+      },
+      {
+        "productName": "1972 Alfa Romeo GTA",
+        "MSRP": "136.00"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:27:34.603987",
+    "question": "Get customer names and cities",
+    "decomposition": {
+      "intent": "Retrieve customer names and cities",
+      "tables": [
+        "customers"
+      ],
+      "columns": [
+        "customers.customerName",
+        "customers.city"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"customers\".\"customerName\", \"customers\".\"city\" FROM \"customers\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 0.952,
+    "error": null,
+    "result_preview": [
+      {
+        "customerName": "Atelier graphique",
+        "city": "Nantes"
+      },
+      {
+        "customerName": "Signal Gift Stores",
+        "city": "Las Vegas"
+      },
+      {
+        "customerName": "Australian Collectors, Co.",
+        "city": "Melbourne"
+      },
+      {
+        "customerName": "La Rochelle Gifts",
+        "city": "Nantes"
+      },
+      {
+        "customerName": "Baane Mini Imports",
+        "city": "Stavern"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:27:37.077995",
+    "question": "List employee first and last names",
+    "decomposition": {
+      "intent": "List employee names",
+      "tables": [
+        "employees"
+      ],
+      "columns": [
+        "employees.firstName",
+        "employees.lastName"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"firstName\", \"lastName\" FROM \"employees\" AS \"employees\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 1.449,
+    "error": null,
+    "result_preview": [
+      {
+        "firstName": "Diane",
+        "lastName": "Murphy"
+      },
+      {
+        "firstName": "Mary",
+        "lastName": "Patterson"
+      },
+      {
+        "firstName": "Jeff",
+        "lastName": "Firrelli"
+      },
+      {
+        "firstName": "William",
+        "lastName": "Patterson"
+      },
+      {
+        "firstName": "Gerard",
+        "lastName": "Bondur"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:27:38.888076",
+    "question": "Get all order dates",
+    "decomposition": {
+      "intent": "Retrieve all order dates",
+      "tables": [
+        "orders"
+      ],
+      "columns": [
+        "orders.orderDate"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"o\".\"orderDate\" FROM \"orders\" AS \"o\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 0.78,
+    "error": null,
+    "result_preview": [
+      {
+        "orderDate": "2003-01-06"
+      },
+      {
+        "orderDate": "2003-01-09"
+      },
+      {
+        "orderDate": "2003-01-10"
+      },
+      {
+        "orderDate": "2003-01-29"
+      },
+      {
+        "orderDate": "2003-01-31"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:27:40.868538",
+    "question": "Show product vendor list",
+    "decomposition": {
+      "intent": "Retrieve a list of product vendors",
+      "tables": [
+        "products"
+      ],
+      "columns": [
+        "products.productVendor"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT DISTINCT \"p\".\"productVendor\" FROM \"products\" AS \"p\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 0.958,
+    "error": null,
+    "result_preview": [
+      {
+        "productVendor": "Welly Diecast Productions"
+      },
+      {
+        "productVendor": "Motor City Art Classics"
+      },
+      {
+        "productVendor": "Classic Metal Creations"
+      },
+      {
+        "productVendor": "Studio M Art Models"
+      },
+      {
+        "productVendor": "Exoto Designs"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:27:42.694398",
+    "question": "Get all product codes",
+    "decomposition": {
+      "intent": "Retrieve all product codes",
+      "tables": [
+        "products"
+      ],
+      "columns": [
+        "products.productCode"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"p\".\"productCode\" FROM \"products\" AS \"p\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 0.649,
+    "error": null,
+    "result_preview": [
+      {
+        "productCode": "S10_1678"
+      },
+      {
+        "productCode": "S10_1949"
+      },
+      {
+        "productCode": "S10_2016"
+      },
+      {
+        "productCode": "S10_4698"
+      },
+      {
+        "productCode": "S10_4757"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:27:44.621813",
+    "question": "List all countries from offices",
+    "decomposition": {
+      "intent": "List all countries from offices",
+      "tables": [
+        "offices"
+      ],
+      "columns": [
+        "offices.country"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"o\".\"country\" FROM \"offices\" AS \"o\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 0.91,
+    "error": null,
+    "result_preview": [
+      {
+        "country": "USA"
+      },
+      {
+        "country": "USA"
+      },
+      {
+        "country": "USA"
+      },
+      {
+        "country": "France"
+      },
+      {
+        "country": "Japan"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:27:46.609522",
+    "question": "Show all order statuses",
+    "decomposition": {
+      "intent": "Retrieve all unique order statuses",
+      "tables": [
+        "orders"
+      ],
+      "columns": [
+        "orders.status"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT DISTINCT \"status\" FROM \"orders\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 0.949,
+    "error": null,
+    "result_preview": [
+      {
+        "status": "Shipped"
+      },
+      {
+        "status": "In Process"
+      },
+      {
+        "status": "Disputed"
+      },
+      {
+        "status": "Cancelled"
+      },
+      {
+        "status": "Resolved"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:27:48.146564",
+    "question": "Get all payment amounts",
+    "decomposition": {
+      "intent": "Retrieve all payment amounts",
+      "tables": [
+        "payments"
+      ],
+      "columns": [
+        "payments.amount"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"amount\" FROM \"payments\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 0.509,
+    "error": null,
+    "result_preview": [
+      {
+        "amount": "6066.78"
+      },
+      {
+        "amount": "14571.44"
+      },
+      {
+        "amount": "1676.14"
+      },
+      {
+        "amount": "14191.12"
+      },
+      {
+        "amount": "32641.98"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:27:54.020256",
+    "question": "List all job titles",
+    "decomposition": {
+      "intent": "List all job titles",
+      "tables": [
+        "employees"
+      ],
+      "columns": [
+        "employees.jobTitle"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"jobTitle\" FROM \"employees\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 4.848,
+    "error": null,
+    "result_preview": [
+      {
+        "jobTitle": "President"
+      },
+      {
+        "jobTitle": "VP Sales"
+      },
+      {
+        "jobTitle": "VP Marketing"
+      },
+      {
+        "jobTitle": "Sales Manager (APAC)"
+      },
+      {
+        "jobTitle": "Sale Manager (EMEA)"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:28:00.618708",
+    "question": "Get customer phone numbers",
+    "decomposition": {
+      "intent": "Get customer phone numbers",
+      "tables": [
+        "customers",
+        "offices"
+      ],
+      "columns": [
+        "offices.phone"
+      ],
+      "filters": [],
+      "joins": [
+        "customers.salesRepEmployeeNumber = employees.employeeNumber",
+        "employees.officeCode = offices.officeCode"
+      ]
+    },
+    "sql": "SELECT \"offices\".\"phone\" FROM \"customers\" \nJOIN \"employees\" ON \"customers\".\"salesRepEmployeeNumber\" = \"employees\".\"employeeNumber\" \nJOIN \"offices\" ON \"employees\".\"officeCode\" = \"offices\".\"officeCode\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 5.578,
+    "error": null,
+    "result_preview": [
+      {
+        "phone": "+33 14 723 4404"
+      },
+      {
+        "phone": "+1 650 219 4782"
+      },
+      {
+        "phone": "+61 2 9264 2451"
+      },
+      {
+        "phone": "+33 14 723 4404"
+      },
+      {
+        "phone": "+44 20 7877 2041"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:28:05.297245",
+    "question": "Show product MSRP values",
+    "decomposition": {
+      "intent": "Retrieve product MSRP values",
+      "tables": [
+        "products"
+      ],
+      "columns": [
+        "products.MSRP"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"p\".\"MSRP\" FROM \"products\" AS \"p\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 3.661,
+    "error": null,
+    "result_preview": [
+      {
+        "MSRP": "95.70"
+      },
+      {
+        "MSRP": "214.30"
+      },
+      {
+        "MSRP": "118.94"
+      },
+      {
+        "MSRP": "193.66"
+      },
+      {
+        "MSRP": "136.00"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:28:11.378198",
+    "question": "List order numbers",
+    "decomposition": {
+      "intent": "List order numbers",
+      "tables": [
+        "orders"
+      ],
+      "columns": [
+        "orders.orderNumber"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"o\".\"orderNumber\" FROM \"orders\" AS \"o\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 5.057,
+    "error": null,
+    "result_preview": [
+      {
+        "orderNumber": 10100
+      },
+      {
+        "orderNumber": 10101
+      },
+      {
+        "orderNumber": 10102
+      },
+      {
+        "orderNumber": 10103
+      },
+      {
+        "orderNumber": 10104
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:28:17.561906",
+    "question": "Get orders with customer names",
+    "decomposition": {
+      "intent": "Retrieve orders with corresponding customer names",
+      "tables": [
+        "orders",
+        "customers"
+      ],
+      "columns": [
+        "orders.orderNumber",
+        "customers.customerName"
+      ],
+      "filters": [],
+      "joins": [
+        "orders.customerNumber = customers.customerNumber"
+      ]
+    },
+    "sql": "SELECT \"orders\".\"orderNumber\", \"customers\".\"customerName\" FROM \"orders\" JOIN \"customers\" ON \"orders\".\"customerNumber\" = \"customers\".\"customerNumber\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 5.165,
+    "error": null,
+    "result_preview": [
+      {
+        "orderNumber": 10100,
+        "customerName": "Online Diecast Creations Co."
+      },
+      {
+        "orderNumber": 10101,
+        "customerName": "Blauer See Auto, Co."
+      },
+      {
+        "orderNumber": 10102,
+        "customerName": "Vitachrome Inc."
+      },
+      {
+        "orderNumber": 10103,
+        "customerName": "Baane Mini Imports"
+      },
+      {
+        "orderNumber": 10104,
+        "customerName": "Euro+ Shopping Channel"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:28:23.463493",
+    "question": "Get employees with office city",
+    "decomposition": {
+      "intent": "Retrieve employees along with their office city",
+      "tables": [
+        "employees",
+        "offices"
+      ],
+      "columns": [
+        "employees.firstName",
+        "employees.lastName",
+        "offices.city"
+      ],
+      "filters": [],
+      "joins": [
+        "employees.officeCode = offices.officeCode"
+      ]
+    },
+    "sql": "SELECT \"e\".\"firstName\", \"e\".\"lastName\", \"o\".\"city\" \nFROM \"employees\" \"e\" \nJOIN \"offices\" \"o\" ON \"e\".\"officeCode\" = \"o\".\"officeCode\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 4.887,
+    "error": null,
+    "result_preview": [
+      {
+        "firstName": "Diane",
+        "lastName": "Murphy",
+        "city": "San Francisco"
+      },
+      {
+        "firstName": "Mary",
+        "lastName": "Patterson",
+        "city": "San Francisco"
+      },
+      {
+        "firstName": "Jeff",
+        "lastName": "Firrelli",
+        "city": "San Francisco"
+      },
+      {
+        "firstName": "William",
+        "lastName": "Patterson",
+        "city": "Sydney"
+      },
+      {
+        "firstName": "Gerard",
+        "lastName": "Bondur",
+        "city": "Paris"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:28:29.770330",
+    "question": "Get payments with customer names",
+    "decomposition": {
+      "intent": "Retrieve payments with corresponding customer names",
+      "tables": [
+        "payments",
+        "customers"
+      ],
+      "columns": [
+        "payments.checkNumber",
+        "payments.paymentDate",
+        "payments.amount",
+        "customers.customerName"
+      ],
+      "filters": [],
+      "joins": [
+        "payments.customerNumber = customers.customerNumber"
+      ]
+    },
+    "sql": "SELECT \"payments\".\"checkNumber\", \"payments\".\"paymentDate\", \"payments\".\"amount\", \"customers\".\"customerName\" \nFROM \"payments\" \nJOIN \"customers\" ON \"payments\".\"customerNumber\" = \"customers\".\"customerNumber\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 5.244,
+    "error": null,
+    "result_preview": [
+      {
+        "checkNumber": "HQ336336",
+        "paymentDate": "2004-10-19",
+        "amount": "6066.78",
+        "customerName": "Atelier graphique"
+      },
+      {
+        "checkNumber": "JM555205",
+        "paymentDate": "2003-06-05",
+        "amount": "14571.44",
+        "customerName": "Atelier graphique"
+      },
+      {
+        "checkNumber": "OM314933",
+        "paymentDate": "2004-12-18",
+        "amount": "1676.14",
+        "customerName": "Atelier graphique"
+      },
+      {
+        "checkNumber": "BO864823",
+        "paymentDate": "2004-12-17",
+        "amount": "14191.12",
+        "customerName": "Signal Gift Stores"
+      },
+      {
+        "checkNumber": "HQ55022",
+        "paymentDate": "2003-06-06",
+        "amount": "32641.98",
+        "customerName": "Signal Gift Stores"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:28:36.043358",
+    "question": "Get order details with product names",
+    "decomposition": {
+      "intent": "Retrieve order details with corresponding product names",
+      "tables": [
+        "orderdetails",
+        "products"
+      ],
+      "columns": [
+        "orderdetails.orderNumber",
+        "orderdetails.productCode",
+        "orderdetails.quantityOrdered",
+        "orderdetails.priceEach",
+        "products.productName"
+      ],
+      "filters": [],
+      "joins": [
+        "orderdetails.productCode = products.productCode"
+      ]
+    },
+    "sql": "SELECT \"orderdetails\".\"orderNumber\", \"orderdetails\".\"productCode\", \"orderdetails\".\"quantityOrdered\", \"orderdetails\".\"priceEach\", \"products\".\"productName\" \nFROM \"orderdetails\" \nINNER JOIN \"products\" ON \"orderdetails\".\"productCode\" = \"products\".\"productCode\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 5.24,
+    "error": null,
+    "result_preview": [
+      {
+        "orderNumber": 10100,
+        "productCode": "S18_1749",
+        "quantityOrdered": 30,
+        "priceEach": "136.00",
+        "productName": "1917 Grand Touring Sedan"
+      },
+      {
+        "orderNumber": 10100,
+        "productCode": "S18_2248",
+        "quantityOrdered": 50,
+        "priceEach": "55.09",
+        "productName": "1911 Ford Town Car"
+      },
+      {
+        "orderNumber": 10100,
+        "productCode": "S18_4409",
+        "quantityOrdered": 22,
+        "priceEach": "75.46",
+        "productName": "1932 Alfa Romeo 8C2300 Spider Sport"
+      },
+      {
+        "orderNumber": 10100,
+        "productCode": "S24_3969",
+        "quantityOrdered": 49,
+        "priceEach": "35.29",
+        "productName": "1936 Mercedes Benz 500k Roadster"
+      },
+      {
+        "orderNumber": 10101,
+        "productCode": "S18_2325",
+        "quantityOrdered": 25,
+        "priceEach": "108.06",
+        "productName": "1932 Model A Ford J-Coupe"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:28:42.696772",
+    "question": "Get products with product line description",
+    "decomposition": {
+      "intent": "Retrieve products with their respective product line descriptions",
+      "tables": [
+        "products",
+        "productlines"
+      ],
+      "columns": [
+        "products.productCode",
+        "products.productName",
+        "productlines.textDescription"
+      ],
+      "filters": [],
+      "joins": [
+        "products.productLine = productlines.productLine"
+      ]
+    },
+    "sql": "SELECT \"products\".\"productCode\", \"products\".\"productName\", \"productlines\".\"textDescription\" \nFROM \"products\" \nJOIN \"productlines\" \nON \"products\".\"productLine\" = \"productlines\".\"productLine\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 5.634,
+    "error": null,
+    "result_preview": [
+      {
+        "productCode": "S10_1678",
+        "productName": "1969 Harley Davidson Ultimate Chopper",
+        "textDescription": "Our motorcycles are state of the art replicas of classic as well as contemporary motorcycle legends such as Harley Davidson, Ducati and Vespa. Models contain stunning details such as official logos, rotating wheels, working kickstand, front suspension, gear-shift lever, footbrake lever, and drive chain. Materials used include diecast and plastic. The models range in size from 1:10 to 1:50 scale and include numerous limited edition and several out-of-production vehicles. All models come fully assembled and ready for display in the home or office. Most include a certificate of authenticity."
+      },
+      {
+        "productCode": "S10_1949",
+        "productName": "1952 Alpine Renault 1300",
+        "textDescription": "Attention car enthusiasts: Make your wildest car ownership dreams come true. Whether you are looking for classic muscle cars, dream sports cars or movie-inspired miniatures, you will find great choices in this category. These replicas feature superb attention to detail and craftsmanship and offer features such as working steering system, opening forward compartment, opening rear trunk with removable spare wheel, 4-wheel independent spring suspension, and so on. The models range in size from 1:10 to 1:24 scale and include numerous limited edition and several out-of-production vehicles. All models include a certificate of authenticity from their manufacturers and come fully assembled and ready for display in the home or office."
+      },
+      {
+        "productCode": "S10_2016",
+        "productName": "1996 Moto Guzzi 1100i",
+        "textDescription": "Our motorcycles are state of the art replicas of classic as well as contemporary motorcycle legends such as Harley Davidson, Ducati and Vespa. Models contain stunning details such as official logos, rotating wheels, working kickstand, front suspension, gear-shift lever, footbrake lever, and drive chain. Materials used include diecast and plastic. The models range in size from 1:10 to 1:50 scale and include numerous limited edition and several out-of-production vehicles. All models come fully assembled and ready for display in the home or office. Most include a certificate of authenticity."
+      },
+      {
+        "productCode": "S10_4698",
+        "productName": "2003 Harley-Davidson Eagle Drag Bike",
+        "textDescription": "Our motorcycles are state of the art replicas of classic as well as contemporary motorcycle legends such as Harley Davidson, Ducati and Vespa. Models contain stunning details such as official logos, rotating wheels, working kickstand, front suspension, gear-shift lever, footbrake lever, and drive chain. Materials used include diecast and plastic. The models range in size from 1:10 to 1:50 scale and include numerous limited edition and several out-of-production vehicles. All models come fully assembled and ready for display in the home or office. Most include a certificate of authenticity."
+      },
+      {
+        "productCode": "S10_4757",
+        "productName": "1972 Alfa Romeo GTA",
+        "textDescription": "Attention car enthusiasts: Make your wildest car ownership dreams come true. Whether you are looking for classic muscle cars, dream sports cars or movie-inspired miniatures, you will find great choices in this category. These replicas feature superb attention to detail and craftsmanship and offer features such as working steering system, opening forward compartment, opening rear trunk with removable spare wheel, 4-wheel independent spring suspension, and so on. The models range in size from 1:10 to 1:24 scale and include numerous limited edition and several out-of-production vehicles. All models include a certificate of authenticity from their manufacturers and come fully assembled and ready for display in the home or office."
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:28:48.965291",
+    "question": "Get customers with sales rep names",
+    "decomposition": {
+      "intent": "Retrieve customer information along with their sales representative names",
+      "tables": [
+        "customers",
+        "employees"
+      ],
+      "columns": [
+        "customers.customerNumber",
+        "customers.customerName",
+        "employees.firstName",
+        "employees.lastName"
+      ],
+      "filters": [],
+      "joins": [
+        "customers.salesRepEmployeeNumber = employees.employeeNumber"
+      ]
+    },
+    "sql": "SELECT \"customers\".\"customerNumber\", \"customers\".\"customerName\", \"employees\".\"firstName\", \"employees\".\"lastName\" \nFROM \"customers\" \nJOIN \"employees\" ON \"customers\".\"salesRepEmployeeNumber\" = \"employees\".\"employeeNumber\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 5.249,
+    "error": null,
+    "result_preview": [
+      {
+        "customerNumber": 103,
+        "customerName": "Atelier graphique",
+        "firstName": "Gerard",
+        "lastName": "Hernandez"
+      },
+      {
+        "customerNumber": 112,
+        "customerName": "Signal Gift Stores",
+        "firstName": "Leslie",
+        "lastName": "Thompson"
+      },
+      {
+        "customerNumber": 114,
+        "customerName": "Australian Collectors, Co.",
+        "firstName": "Andy",
+        "lastName": "Fixter"
+      },
+      {
+        "customerNumber": 119,
+        "customerName": "La Rochelle Gifts",
+        "firstName": "Gerard",
+        "lastName": "Hernandez"
+      },
+      {
+        "customerNumber": 121,
+        "customerName": "Baane Mini Imports",
+        "firstName": "Barry",
+        "lastName": "Jones"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:28:55.238630",
+    "question": "Get orders with customer city",
+    "decomposition": {
+      "intent": "Retrieve orders with customer city information",
+      "tables": [
+        "orders",
+        "customers"
+      ],
+      "columns": [
+        "orders.orderNumber",
+        "customers.city"
+      ],
+      "filters": [],
+      "joins": [
+        "orders.customerNumber = customers.customerNumber"
+      ]
+    },
+    "sql": "SELECT \"o\".\"orderNumber\", \"c\".\"city\" FROM \"orders\" \"o\" INNER JOIN \"customers\" \"c\" ON \"o\".\"customerNumber\" = \"c\".\"customerNumber\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 5.253,
+    "error": null,
+    "result_preview": [
+      {
+        "orderNumber": 10100,
+        "city": "Nashua"
+      },
+      {
+        "orderNumber": 10101,
+        "city": "Frankfurt"
+      },
+      {
+        "orderNumber": 10102,
+        "city": "NYC"
+      },
+      {
+        "orderNumber": 10103,
+        "city": "Stavern"
+      },
+      {
+        "orderNumber": 10104,
+        "city": "Madrid"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:29:01.219275",
+    "question": "Get employees and their manager",
+    "decomposition": {
+      "intent": "Get employees and their manager",
+      "tables": [
+        "employees"
+      ],
+      "columns": [
+        "employees.employeeNumber",
+        "employees.firstName",
+        "employees.lastName",
+        "employees.reportsTo"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"employees\".\"employeeNumber\", \"employees\".\"firstName\", \"employees\".\"lastName\", \"employees\".\"reportsTo\" FROM \"employees\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 4.952,
+    "error": null,
+    "result_preview": [
+      {
+        "employeeNumber": 1002,
+        "firstName": "Diane",
+        "lastName": "Murphy",
+        "reportsTo": null
+      },
+      {
+        "employeeNumber": 1056,
+        "firstName": "Mary",
+        "lastName": "Patterson",
+        "reportsTo": 1002
+      },
+      {
+        "employeeNumber": 1076,
+        "firstName": "Jeff",
+        "lastName": "Firrelli",
+        "reportsTo": 1002
+      },
+      {
+        "employeeNumber": 1088,
+        "firstName": "William",
+        "lastName": "Patterson",
+        "reportsTo": 1056
+      },
+      {
+        "employeeNumber": 1102,
+        "firstName": "Gerard",
+        "lastName": "Bondur",
+        "reportsTo": 1056
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:29:07.265800",
+    "question": "Get orderdetails with product vendor",
+    "decomposition": {
+      "intent": "Get order details with product vendor information",
+      "tables": [
+        "orderdetails",
+        "products"
+      ],
+      "columns": [
+        "orderdetails.orderNumber",
+        "orderdetails.productCode",
+        "orderdetails.quantityOrdered",
+        "orderdetails.priceEach",
+        "products.productVendor"
+      ],
+      "filters": [],
+      "joins": [
+        "orderdetails.productCode = products.productCode"
+      ]
+    },
+    "sql": "SELECT \"orderdetails\".\"orderNumber\", \"orderdetails\".\"productCode\", \"orderdetails\".\"quantityOrdered\", \"orderdetails\".\"priceEach\", \"products\".\"productVendor\" \nFROM \"orderdetails\" \nJOIN \"products\" ON \"orderdetails\".\"productCode\" = \"products\".\"productCode\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 5.016,
+    "error": null,
+    "result_preview": [
+      {
+        "orderNumber": 10100,
+        "productCode": "S18_1749",
+        "quantityOrdered": 30,
+        "priceEach": "136.00",
+        "productVendor": "Welly Diecast Productions"
+      },
+      {
+        "orderNumber": 10100,
+        "productCode": "S18_2248",
+        "quantityOrdered": 50,
+        "priceEach": "55.09",
+        "productVendor": "Motor City Art Classics"
+      },
+      {
+        "orderNumber": 10100,
+        "productCode": "S18_4409",
+        "quantityOrdered": 22,
+        "priceEach": "75.46",
+        "productVendor": "Exoto Designs"
+      },
+      {
+        "orderNumber": 10100,
+        "productCode": "S24_3969",
+        "quantityOrdered": 49,
+        "priceEach": "35.29",
+        "productVendor": "Red Start Diecast"
+      },
+      {
+        "orderNumber": 10101,
+        "productCode": "S18_2325",
+        "quantityOrdered": 25,
+        "priceEach": "108.06",
+        "productVendor": "Autoart Studio Design"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:29:13.900772",
+    "question": "Get payments with customer country",
+    "decomposition": {
+      "intent": "Retrieve payments with customer country information",
+      "tables": [
+        "payments",
+        "customers",
+        "orders"
+      ],
+      "columns": [
+        "payments.checkNumber",
+        "payments.paymentDate",
+        "payments.amount",
+        "customers.country"
+      ],
+      "filters": [],
+      "joins": [
+        "payments.customerNumber = customers.customerNumber"
+      ]
+    },
+    "sql": "SELECT \"p\".\"checkNumber\", \"p\".\"paymentDate\", \"p\".\"amount\", \"c\".\"country\" \nFROM \"payments\" \"p\" \nJOIN \"customers\" \"c\" ON \"p\".\"customerNumber\" = \"c\".\"customerNumber\" \nJOIN \"orders\" \"o\" ON \"p\".\"customerNumber\" = \"o\".\"customerNumber\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 5.619,
+    "error": null,
+    "result_preview": [
+      {
+        "checkNumber": "HQ336336",
+        "paymentDate": "2004-10-19",
+        "amount": "6066.78",
+        "country": "France"
+      },
+      {
+        "checkNumber": "HQ336336",
+        "paymentDate": "2004-10-19",
+        "amount": "6066.78",
+        "country": "France"
+      },
+      {
+        "checkNumber": "HQ336336",
+        "paymentDate": "2004-10-19",
+        "amount": "6066.78",
+        "country": "France"
+      },
+      {
+        "checkNumber": "JM555205",
+        "paymentDate": "2003-06-05",
+        "amount": "14571.44",
+        "country": "France"
+      },
+      {
+        "checkNumber": "JM555205",
+        "paymentDate": "2003-06-05",
+        "amount": "14571.44",
+        "country": "France"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:29:17.665348",
+    "question": "Count customers per country",
+    "decomposition": {
+      "intent": "count customers by country",
+      "tables": [
+        "customers"
+      ],
+      "columns": [
+        "customers.country",
+        "customers.customerNumber"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"country\", COUNT(\"customerNumber\") FROM \"customers\" GROUP BY \"country\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 2.741,
+    "error": null,
+    "result_preview": [
+      {
+        "country": "Switzerland",
+        "count": 3
+      },
+      {
+        "country": "New Zealand",
+        "count": 4
+      },
+      {
+        "country": "Italy",
+        "count": 4
+      },
+      {
+        "country": "Russia",
+        "count": 1
+      },
+      {
+        "country": "Sweden",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:29:23.397322",
+    "question": "Total payments per customer",
+    "decomposition": {
+      "intent": "calculate total payments per customer",
+      "tables": [
+        "customers",
+        "payments"
+      ],
+      "columns": [
+        "customers.customerNumber",
+        "payments.amount"
+      ],
+      "filters": [],
+      "joins": [
+        "customers.customerNumber = payments.customerNumber"
+      ]
+    },
+    "sql": "SELECT \"c\".\"customerNumber\", SUM(\"p\".\"amount\") AS \"total_payments\" \nFROM \"customers\" \"c\" \nJOIN \"payments\" \"p\" ON \"c\".\"customerNumber\" = \"p\".\"customerNumber\" \nGROUP BY \"c\".\"customerNumber\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 4.711,
+    "error": null,
+    "result_preview": [
+      {
+        "customerNumber": 455,
+        "total_payments": "70378.65"
+      },
+      {
+        "customerNumber": 448,
+        "total_payments": "76776.44"
+      },
+      {
+        "customerNumber": 146,
+        "total_payments": "130305.35"
+      },
+      {
+        "customerNumber": 350,
+        "total_payments": "71547.53"
+      },
+      {
+        "customerNumber": 382,
+        "total_payments": "85060.00"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:29:29.586407",
+    "question": "Number of orders per status",
+    "decomposition": {
+      "intent": "count orders by status",
+      "tables": [
+        "orders"
+      ],
+      "columns": [
+        "orders.status",
+        "orders.orderNumber"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"status\", COUNT(\"orderNumber\") FROM \"orders\" GROUP BY \"status\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 5.161,
+    "error": null,
+    "result_preview": [
+      {
+        "status": "Shipped",
+        "count": 303
+      },
+      {
+        "status": "In Process",
+        "count": 6
+      },
+      {
+        "status": "Disputed",
+        "count": 3
+      },
+      {
+        "status": "Cancelled",
+        "count": 6
+      },
+      {
+        "status": "Resolved",
+        "count": 4
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:29:35.776931",
+    "question": "Products per product line",
+    "decomposition": {
+      "intent": "Retrieve products grouped by product line",
+      "tables": [
+        "products",
+        "productlines"
+      ],
+      "columns": [
+        "productlines.productLine",
+        "products.productName"
+      ],
+      "filters": [],
+      "joins": [
+        "products.productLine = productlines.productLine"
+      ]
+    },
+    "sql": "SELECT \"productlines\".\"productLine\", \"products\".\"productName\" FROM \"products\" JOIN \"productlines\" ON \"products\".\"productLine\" = \"productlines\".\"productLine\" GROUP BY \"productlines\".\"productLine\", \"products\".\"productName\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 5.165,
+    "error": null,
+    "result_preview": [
+      {
+        "productLine": "Motorcycles",
+        "productName": "2002 Suzuki XREO"
+      },
+      {
+        "productLine": "Classic Cars",
+        "productName": "1982 Camaro Z28"
+      },
+      {
+        "productLine": "Classic Cars",
+        "productName": "1992 Ferrari 360 Spider red"
+      },
+      {
+        "productLine": "Classic Cars",
+        "productName": "1952 Alpine Renault 1300"
+      },
+      {
+        "productLine": "Classic Cars",
+        "productName": "1957 Ford Thunderbird"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:29:42.430187",
+    "question": "Employees per office",
+    "decomposition": {
+      "intent": "get the number of employees per office",
+      "tables": [
+        "employees",
+        "offices"
+      ],
+      "columns": [
+        "employees.employeeNumber",
+        "offices.officeCode",
+        "offices.city",
+        "offices.country"
+      ],
+      "filters": [],
+      "joins": [
+        "employees.officeCode = offices.officeCode"
+      ]
+    },
+    "sql": "SELECT \"offices\".\"officeCode\", \"offices\".\"city\", \"offices\".\"country\", COUNT(\"employees\".\"employeeNumber\") \nFROM \"employees\" \nJOIN \"offices\" ON \"employees\".\"officeCode\" = \"offices\".\"officeCode\" \nGROUP BY \"offices\".\"officeCode\", \"offices\".\"city\", \"offices\".\"country\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 5.603,
+    "error": null,
+    "result_preview": [
+      {
+        "officeCode": "6",
+        "city": "Sydney",
+        "country": "Australia",
+        "count": 4
+      },
+      {
+        "officeCode": "2",
+        "city": "Boston",
+        "country": "USA",
+        "count": 2
+      },
+      {
+        "officeCode": "4",
+        "city": "Paris",
+        "country": "France",
+        "count": 5
+      },
+      {
+        "officeCode": "7",
+        "city": "London",
+        "country": "UK",
+        "count": 2
+      },
+      {
+        "officeCode": "5",
+        "city": "Tokyo",
+        "country": "Japan",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:29:48.415439",
+    "question": "Total stock per product vendor",
+    "decomposition": {
+      "intent": "calculate total stock per product vendor",
+      "tables": [
+        "products",
+        "productlines"
+      ],
+      "columns": [
+        "products.productVendor",
+        "products.quantityInStock"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"p\".\"productVendor\", SUM(\"p\".\"quantityInStock\") AS \"total_stock\" FROM \"products\" \"p\" GROUP BY \"p\".\"productVendor\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 4.911,
+    "error": null,
+    "result_preview": [
+      {
+        "productVendor": "Welly Diecast Productions",
+        "total_stock": 45095
+      },
+      {
+        "productVendor": "Motor City Art Classics",
+        "total_stock": 43105
+      },
+      {
+        "productVendor": "Classic Metal Creations",
+        "total_stock": 45408
+      },
+      {
+        "productVendor": "Studio M Art Models",
+        "total_stock": 42253
+      },
+      {
+        "productVendor": "Exoto Designs",
+        "total_stock": 44166
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:29:55.502938",
+    "question": "Average buy price per product line",
+    "decomposition": {
+      "intent": "calculate average buy price per product line",
+      "tables": [
+        "products",
+        "productlines"
+      ],
+      "columns": [
+        "products.buyPrice",
+        "products.productLine",
+        "productlines.productLine"
+      ],
+      "filters": [],
+      "joins": [
+        "products.productLine = productlines.productLine"
+      ]
+    },
+    "sql": "SELECT AVG(p.\"buyPrice\") , p.\"productLine\" FROM \"products\" p JOIN \"productlines\" pl ON p.\"productLine\" = pl.\"productLine\" GROUP BY p.\"productLine\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 6.068,
+    "error": null,
+    "result_preview": [
+      {
+        "avg": "64.4463157894736842",
+        "productLine": "Classic Cars"
+      },
+      {
+        "avg": "43.9233333333333333",
+        "productLine": "Trains"
+      },
+      {
+        "avg": "49.6291666666666667",
+        "productLine": "Planes"
+      },
+      {
+        "avg": "56.3290909090909091",
+        "productLine": "Trucks and Buses"
+      },
+      {
+        "avg": "46.0662500000000000",
+        "productLine": "Vintage Cars"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:30:02.653539",
+    "question": "Orders per customer",
+    "decomposition": {
+      "intent": "count orders for each customer",
+      "tables": [
+        "orders",
+        "customers"
+      ],
+      "columns": [
+        "orders.orderNumber",
+        "customers.customerNumber",
+        "customers.customerName"
+      ],
+      "filters": [],
+      "joins": [
+        "orders.customerNumber = customers.customerNumber"
+      ]
+    },
+    "sql": "SELECT \"orders\".\"orderNumber\", \"customers\".\"customerNumber\", \"customers\".\"customerName\" \nFROM \"orders\" \nJOIN \"customers\" ON \"orders\".\"customerNumber\" = \"customers\".\"customerNumber\" \nGROUP BY \"orders\".\"orderNumber\", \"customers\".\"customerNumber\", \"customers\".\"customerName\" \nORDER BY \"customers\".\"customerNumber\"",
+    "status": "success",
+    "retries": 1,
+    "total_time": 6.095,
+    "error": null,
+    "result_preview": [
+      {
+        "orderNumber": 10123,
+        "customerNumber": 103,
+        "customerName": "Atelier graphique"
+      },
+      {
+        "orderNumber": 10298,
+        "customerNumber": 103,
+        "customerName": "Atelier graphique"
+      },
+      {
+        "orderNumber": 10345,
+        "customerNumber": 103,
+        "customerName": "Atelier graphique"
+      },
+      {
+        "orderNumber": 10124,
+        "customerNumber": 112,
+        "customerName": "Signal Gift Stores"
+      },
+      {
+        "orderNumber": 10278,
+        "customerNumber": 112,
+        "customerName": "Signal Gift Stores"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:30:09.249249",
+    "question": "Max MSRP per product line",
+    "decomposition": {
+      "intent": "Find the maximum MSRP for each product line",
+      "tables": [
+        "products",
+        "productlines"
+      ],
+      "columns": [
+        "products.productLine",
+        "products.MSRP"
+      ],
+      "filters": [],
+      "joins": [
+        "products.productLine = productlines.productLine"
+      ]
+    },
+    "sql": "SELECT \"p\".\"productLine\", MAX(\"p\".\"MSRP\") \nFROM \"products\" \"p\" \nJOIN \"productlines\" \"pl\" ON \"p\".\"productLine\" = \"pl\".\"productLine\" \nGROUP BY \"p\".\"productLine\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 5.568,
+    "error": null,
+    "result_preview": [
+      {
+        "productLine": "Classic Cars",
+        "max": "214.30"
+      },
+      {
+        "productLine": "Trains",
+        "max": "100.84"
+      },
+      {
+        "productLine": "Planes",
+        "max": "157.69"
+      },
+      {
+        "productLine": "Trucks and Buses",
+        "max": "136.67"
+      },
+      {
+        "productLine": "Vintage Cars",
+        "max": "170.00"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:30:15.510676",
+    "question": "Min buy price per vendor",
+    "decomposition": {
+      "intent": "Find the minimum buy price per product vendor",
+      "tables": [
+        "products"
+      ],
+      "columns": [
+        "products.productVendor",
+        "products.buyPrice"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"productVendor\", MIN(\"buyPrice\") FROM \"products\" GROUP BY \"productVendor\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 5.186,
+    "error": null,
+    "result_preview": [
+      {
+        "productVendor": "Welly Diecast Productions",
+        "min": "24.23"
+      },
+      {
+        "productVendor": "Motor City Art Classics",
+        "min": "22.57"
+      },
+      {
+        "productVendor": "Classic Metal Creations",
+        "min": "20.61"
+      },
+      {
+        "productVendor": "Studio M Art Models",
+        "min": "23.14"
+      },
+      {
+        "productVendor": "Exoto Designs",
+        "min": "43.26"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:30:21.494323",
+    "question": "Total number of customers",
+    "decomposition": {
+      "intent": "count all customers",
+      "tables": [
+        "customers"
+      ],
+      "columns": [
+        "customers.customerNumber"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT COUNT(\"c\".\"customerNumber\") FROM \"customers\" AS \"c\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 4.951,
+    "error": null,
+    "result_preview": [
+      {
+        "count": 122
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:30:38.666434",
+    "question": "Total number of products",
+    "decomposition": {
+      "intent": "count all products",
+      "tables": [
+        "products"
+      ],
+      "columns": [
+        "products.productCode"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": null,
+    "status": "failed",
+    "retries": 0,
+    "total_time": 16.142,
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01krz77c29f3hsde449vfhmtby` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99966, Requested 233. Please try again in 2m51.936s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "result_preview": []
+  },
+  {
+    "timestamp": "2026-05-19 06:30:39.879250",
+    "question": "Total revenue from payments",
+    "decomposition": null,
+    "sql": null,
+    "status": "failed",
+    "retries": 0,
+    "total_time": 0.182,
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01krz77c29f3hsde449vfhmtby` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99965, Requested 405. Please try again in 5m19.68s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "result_preview": []
+  },
+  {
+    "timestamp": "2026-05-19 06:30:41.118538",
+    "question": "Average product price",
+    "decomposition": null,
+    "sql": null,
+    "status": "failed",
+    "retries": 0,
+    "total_time": 0.206,
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01krz77c29f3hsde449vfhmtby` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99963, Requested 404. Please try again in 5m17.088s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "result_preview": []
+  },
+  {
+    "timestamp": "2026-05-19 06:30:42.224677",
+    "question": "Max payment amount",
+    "decomposition": null,
+    "sql": null,
+    "status": "failed",
+    "retries": 0,
+    "total_time": 0.079,
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01krz77c29f3hsde449vfhmtby` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99962, Requested 404. Please try again in 5m16.224s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "result_preview": []
+  },
+  {
+    "timestamp": "2026-05-19 06:30:43.346732",
+    "question": "Min payment amount",
+    "decomposition": null,
+    "sql": null,
+    "status": "failed",
+    "retries": 0,
+    "total_time": 0.091,
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01krz77c29f3hsde449vfhmtby` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99961, Requested 406. Please try again in 5m17.088s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "result_preview": []
+  },
+  {
+    "timestamp": "2026-05-19 06:30:44.465261",
+    "question": "Count total orders",
+    "decomposition": null,
+    "sql": null,
+    "status": "failed",
+    "retries": 0,
+    "total_time": 0.081,
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01krz77c29f3hsde449vfhmtby` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99959, Requested 406. Please try again in 5m15.36s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "result_preview": []
+  },
+  {
+    "timestamp": "2026-05-19 06:30:45.578648",
+    "question": "Total quantity in stock",
+    "decomposition": null,
+    "sql": null,
+    "status": "failed",
+    "retries": 0,
+    "total_time": 0.082,
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01krz77c29f3hsde449vfhmtby` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99958, Requested 408. Please try again in 5m16.224s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "result_preview": []
+  },
+  {
+    "timestamp": "2026-05-19 06:30:46.690006",
+    "question": "Average MSRP",
+    "decomposition": null,
+    "sql": null,
+    "status": "failed",
+    "retries": 0,
+    "total_time": 0.081,
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01krz77c29f3hsde449vfhmtby` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99957, Requested 404. Please try again in 5m11.904s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "result_preview": []
+  },
+  {
+    "timestamp": "2026-05-19 06:30:47.821176",
+    "question": "Number of employees",
+    "decomposition": null,
+    "sql": null,
+    "status": "failed",
+    "retries": 0,
+    "total_time": 0.078,
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01krz77c29f3hsde449vfhmtby` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99956, Requested 404. Please try again in 5m11.039999999s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "result_preview": []
+  },
+  {
+    "timestamp": "2026-05-19 06:50:00.030087",
+    "question": "Count orders per status",
+    "decomposition": {
+      "intent": "count orders by status",
+      "tables": [
+        "orders"
+      ],
+      "columns": [
+        "orders.status",
+        "orders.orderNumber"
+      ],
+      "filters": [],
+      "joins": []
+    },
+    "sql": "SELECT \"status\", COUNT(\"orderNumber\") FROM \"orders\" GROUP BY \"status\"",
+    "status": "success",
+    "retries": 0,
+    "total_time": 1.809,
+    "error": null,
+    "result_preview": [
+      {
+        "status": "Shipped",
+        "count": 303
+      },
+      {
+        "status": "In Process",
+        "count": 6
+      },
+      {
+        "status": "Disputed",
+        "count": 3
+      },
+      {
+        "status": "Cancelled",
+        "count": 6
+      },
+      {
+        "status": "Resolved",
+        "count": 4
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:51:25.609483",
+    "question": "Show me the top 5 products by total revenue",
+    "decomposition": {
+      "intent": "get top 5 products by total revenue",
+      "tables": [
+        "orderdetails",
+        "products"
+      ],
+      "columns": [
+        "orderdetails.productCode",
+        "orderdetails.quantityOrdered",
+        "orderdetails.priceEach",
+        "products.productName"
+      ],
+      "filters": [],
+      "joins": [
+        "orderdetails.productCode = products.productCode"
+      ]
+    },
+    "sql": "SELECT \"od\".\"productCode\", \"p\".\"productName\", SUM(\"od\".\"quantityOrdered\" * \"od\".\"priceEach\") AS \"total_revenue\"\nFROM \"orderdetails\" \"od\"\nJOIN \"products\" \"p\" ON \"od\".\"productCode\" = \"p\".\"productCode\"\nGROUP BY \"od\".\"productCode\", \"p\".\"productName\"\nORDER BY \"total_revenue\" DESC\nLIMIT 5",
+    "status": "success",
+    "retries": 0,
+    "total_time": 0.888,
+    "error": null,
+    "result_preview": [
+      {
+        "productCode": "S18_3232",
+        "productName": "1992 Ferrari 360 Spider red",
+        "total_revenue": "276839.98"
+      },
+      {
+        "productCode": "S12_1108",
+        "productName": "2001 Ferrari Enzo",
+        "total_revenue": "190755.86"
+      },
+      {
+        "productCode": "S10_1949",
+        "productName": "1952 Alpine Renault 1300",
+        "total_revenue": "190017.96"
+      },
+      {
+        "productCode": "S10_4698",
+        "productName": "2003 Harley-Davidson Eagle Drag Bike",
+        "total_revenue": "170686.00"
+      },
+      {
+        "productCode": "S12_1099",
+        "productName": "1968 Ford Mustang",
+        "total_revenue": "161531.48"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19 06:52:07.501376",
+    "question": "Find customers whose total payment amount is greater than the average payment amount",
+    "decomposition": null,
+    "sql": null,
+    "status": "failed",
+    "retries": 0,
+    "total_time": 0.256,
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01krz77c29f3hsde449vfhmtby` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99738, Requested 342. Please try again in 1m9.12s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "result_preview": []
+  },
+  {
+    "timestamp": "2026-05-19 06:53:11.438507",
+    "question": "Show sales performance by territory region",
+    "decomposition": null,
+    "sql": null,
+    "status": "failed",
+    "retries": 0,
+    "total_time": 15.253,
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01krz77c29f3hsde449vfhmtby` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99664, Requested 421. Please try again in 1m13.44s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "result_preview": []
+  }
+]

@@ -1,0 +1,51 @@
+question,intent,tables,columns,filters,joins,status
+List all products,Retrieve all products,products,"products.productCode, products.productName, products.productLine, products.buyPrice, products.MSRP, products.quantityInStock, products.productVendor",,,success
+Get all customers,Retrieve all customer information,customers,"customers.customerNumber, customers.customerName, customers.city, customers.country, customers.salesRepEmployeeNumber",,,success
+Show all orders,Retrieve all orders,orders,"orders.orderNumber, orders.orderDate, orders.requiredDate, orders.shippedDate, orders.status, orders.customerNumber",,,success
+List all employees,List all employees,employees,"employees.employeeNumber, employees.firstName, employees.lastName, employees.jobTitle, employees.officeCode, employees.reportsTo",,,success
+Get all offices,Retrieve all offices,offices,"offices.officeCode, offices.city, offices.country, offices.phone",,,success
+Show all product lines,Retrieve all product lines,productlines,"productlines.productLine, productlines.textDescription",,,success
+List all payments,Retrieve all payment records,payments,"payments.customerNumber, payments.checkNumber, payments.paymentDate, payments.amount",,,success
+Get product names and prices,Retrieve product names and prices,products,"products.productName, products.MSRP",,,success
+Get customer names and cities,Retrieve customer names and cities,customers,"customers.customerName, customers.city",,,success
+List employee first and last names,List employee names,employees,"employees.firstName, employees.lastName",,,success
+Get all order dates,Retrieve all order dates,orders,orders.orderDate,,,success
+Show product vendor list,Retrieve list of product vendors,products,products.productVendor,,,success
+Get all product codes,Retrieve all product codes,products,products.productCode,,,success
+List all countries from offices,List all countries from offices,offices,offices.country,,,success
+Show all order statuses,Retrieve all unique order statuses,orders,orders.status,,,success
+Get all payment amounts,Retrieve all payment amounts,payments,payments.amount,,,success
+List all job titles,List all job titles,employees,employees.jobTitle,,,success
+Get customer phone numbers,Retrieve customer phone numbers,"customers, offices",offices.phone,,"customers.salesRepEmployeeNumber = employees.employeeNumber, employees.officeCode = offices.officeCode",success
+Show product MSRP values,Retrieve product MSRP values,products,products.MSRP,,,success
+List order numbers,List all order numbers,orders,orders.orderNumber,,,success
+Get orders with customer names,Retrieve orders with corresponding customer names,"orders, customers","orders.orderNumber, customers.customerName",,orders.customerNumber = customers.customerNumber,success
+Get employees with office city,Retrieve employees along with their office city,"employees, offices","employees.firstName, employees.lastName, offices.city",,employees.officeCode = offices.officeCode,success
+Get payments with customer names,Retrieve payments with corresponding customer names,"payments, customers","payments.checkNumber, payments.paymentDate, payments.amount, customers.customerName",,payments.customerNumber = customers.customerNumber,success
+Get order details with product names,Retrieve order details with corresponding product names,"orderdetails, products","orderdetails.orderNumber, orderdetails.productCode, orderdetails.quantityOrdered, orderdetails.priceEach, products.productName",,orderdetails.productCode = products.productCode,success
+Get products with product line description,Retrieve products with their respective product line descriptions,"products, productlines","products.productCode, products.productName, productlines.textDescription",,products.productLine = productlines.productLine,success
+Get customers with sales rep names,Retrieve customer information along with their sales representative names,"customers, employees","customers.customerNumber, customers.customerName, employees.firstName, employees.lastName",,customers.salesRepEmployeeNumber = employees.employeeNumber,success
+Get orders with customer city,Retrieve orders with customer city information,"orders, customers","orders.orderNumber, customers.city",,orders.customerNumber = customers.customerNumber,success
+Get employees and their manager,Get employees and their manager,employees,"employees.employeeNumber, employees.firstName, employees.lastName, employees.reportsTo",,,success
+Get orderdetails with product vendor,Retrieve order details with product vendor information,"orderdetails, products","orderdetails.orderNumber, orderdetails.productCode, orderdetails.quantityOrdered, orderdetails.priceEach, products.productVendor",,orderdetails.productCode = products.productCode,success
+Get payments with customer country,Retrieve payments with customer country information,"payments, customers, orders","payments.checkNumber, payments.paymentDate, payments.amount, customers.country",,payments.customerNumber = customers.customerNumber,success
+Count customers per country,count customers by country,customers,"customers.country, customers.customerNumber",,,success
+Total payments per customer,calculate total payments per customer,"customers, payments","customers.customerNumber, payments.amount",,customers.customerNumber = payments.customerNumber,success
+Number of orders per status,count orders by status,orders,"orders.status, orders.orderNumber",,,success
+Products per product line,Retrieve products grouped by product line,"products, productlines","productlines.productLine, products.productName",,products.productLine = productlines.productLine,success
+Employees per office,get the number of employees per office,"employees, offices","offices.officeCode, employees.employeeNumber, offices.city, offices.country",,employees.officeCode = offices.officeCode,success
+Total stock per product vendor,calculate total stock per product vendor,"products, productlines","products.productVendor, products.quantityInStock",,,success
+Average buy price per product line,calculate average buy price per product line,"products, productlines","products.buyPrice, productlines.productLine",,products.productLine = productlines.productLine,success
+Orders per customer,count orders for each customer,"orders, customers","customers.customerNumber, orders.orderNumber",,orders.customerNumber = customers.customerNumber,success
+Max MSRP per product line,Find the maximum MSRP for each product line,"products, productlines","products.productLine, products.MSRP",,products.productLine = productlines.productLine,success
+Min buy price per vendor,Find the minimum buy price per product vendor,products,"products.productVendor, products.buyPrice",,,success
+Total number of customers,count all customers,customers,customers.customerNumber,,,success
+Total number of products,count all products,products,products.productCode,,,success
+Total revenue from payments,calculate total revenue from payments,payments,payments.amount,,,success
+Average product price,calculate average product price,products,products.MSRP,,,success
+Max payment amount,find the maximum payment amount,payments,payments.amount,,,success
+Min payment amount,find the minimum payment amount,payments,payments.amount,,,success
+Count total orders,count total orders,orders,orders.orderNumber,,,success
+Total quantity in stock,calculate total quantity in stock,products,products.quantityInStock,,,success
+Average MSRP,calculate average MSRP of products,products,products.MSRP,,,success
+Number of employees,count the total number of employees,employees,employees.employeeNumber,,,success
