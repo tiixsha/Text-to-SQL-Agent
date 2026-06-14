@@ -4,9 +4,9 @@ import logging
 from datetime import datetime
 from typing import TypedDict, Optional
 from langgraph.graph import StateGraph, END
-from database import execute_query
-from validator import validate_sql
-from sql_generator import decompose, generate, fix
+from src.database.database import execute_query
+from src.engine.validator import validate_sql
+from src.core.sql_generator import decompose, generate, fix
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)

@@ -4,7 +4,7 @@ import time
 import re
 import os
 from datetime import datetime
-from sql_generator import decompose
+from src.core.sql_generator import decompose
 
 INPUT_CSV = "data/sql_questions_only.csv"
 OUTPUT_CSV = "data/decompositions.csv"

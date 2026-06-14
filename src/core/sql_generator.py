@@ -5,7 +5,7 @@ import logging
 from dotenv import load_dotenv
 from langchain_groq import ChatGroq
 from langchain.prompts import PromptTemplate
-from prompts.templates import DECOMPOSE_PROMPT, GENERATE_PROMPT, FIX_PROMPT
+from src.prompts.templates import DECOMPOSE_PROMPT, GENERATE_PROMPT, FIX_PROMPT
 
 load_dotenv()
 

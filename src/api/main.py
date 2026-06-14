@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from executor import run_pipeline
+from src.engine.executor import run_pipeline
 
 app = FastAPI(
     title="Text-to-SQL Agent",

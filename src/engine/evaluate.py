@@ -3,7 +3,7 @@ import json
 import time
 import os
 from datetime import datetime
-from executor import run_pipeline
+from src.engine.executor import run_pipeline
 
 # Paths
 CSV_FILE = "data/sql_questions_only.csv"
